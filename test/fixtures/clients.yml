@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  vcodigo: MyString
+  vruc: MyString
+  vrazon2: MyString
+  vdireccion: MyString
+  vdistrito: MyString
+  vprov: MyString
+  vdep: MyString
+
+two:
+  vcodigo: MyString
+  vruc: MyString
+  vrazon2: MyString
+  vdireccion: MyString
+  vdistrito: MyString
+  vprov: MyString
+  vdep: MyString

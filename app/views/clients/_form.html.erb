@@ -1,0 +1,61 @@
+<%= form_for(@client) do |f| %>
+  <% if @client.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@client.errors.count, "error") %> prohibited this client from being saved:</h2>
+
+      <ul>
+      <% @client.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :vcodigo %><br>
+    <%= f.text_field :vcodigo %>
+  </div>
+  <div class="field">
+    <%= f.label :vruc %><br>
+    <%= f.text_field :vruc %>
+  </div>
+  <div class="field">
+    <%= f.label :vrazon2 %><br>
+    <%= f.text_field :vrazon2 %>
+  </div>
+  <div class="field">
+    <%= f.label :vdireccion %><br>
+    <%= f.text_field :vdireccion %>
+  </div>
+  <div class="field">
+    <%= f.label :vdistrito %><br>
+    <%= f.text_field :vdistrito %>
+  </div>
+  <div class="field">
+    <%= f.label :vprov %><br>
+    <%= f.text_field :vprov %>
+  </div>
+  <div class="field">
+    <%= f.label :vdep %><br>
+    <%= f.text_field :vdep %>
+  </div>
+
+  <div class="field">
+    <%= f.label :mailclient %> <br>
+    <%= f.text_field :mailclient %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :mailclient2 %> <br>
+    <%= f.text_field :mailclient2 %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :mailclient3 %> <br>
+    <%= f.text_field :mailclient3 %>
+  </div>
+  
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

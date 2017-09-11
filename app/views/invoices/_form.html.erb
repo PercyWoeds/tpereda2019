@@ -1,0 +1,74 @@
+<%= form_for(@product) do |f| %>
+  <% if @product.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h2>
+
+      <ul>
+      <% @product.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :cliente %><br />
+    <%= f.text_field :cliente %>
+  </div>
+  <div class="field">
+    <%= f.label :fecha %><br />
+    <%= f.date_select :fecha %>
+  </div>
+  <div class="field">
+    <%= f.label :td %><br />
+    <%= f.text_field :td %>
+  </div>
+  <div class="field">
+    <%= f.label :serie %><br />
+    <%= f.text_field :serie %>
+  </div>
+  <div class="field">
+    <%= f.label :numero %><br />
+    <%= f.text_field :numero %>
+  </div>
+  <div class="field">
+    <%= f.label :preciocigv %><br />
+    <%= f.text_field :preciocigv %>
+  </div>
+  <div class="field">
+    <%= f.label :preciosigv %><br />
+    <%= f.text_field :preciosigv %>
+  </div>
+  <div class="field">
+    <%= f.label :cant1 %><br />
+    <%= f.text_field :cant1 %>
+  </div>
+  <div class="field">
+    <%= f.label :cant2 %><br />
+    <%= f.text_field :cant2 %>
+  </div>
+  <div class="field">
+    <%= f.label :cantidad %><br />
+    <%= f.text_field :cantidad %>
+  </div>
+  <div class="field">
+    <%= f.label :vventa %><br />
+    <%= f.text_field :vventa %>
+  </div>
+  <div class="field">
+    <%= f.label :igv %><br />
+    <%= f.text_field :igv %>
+  </div>
+  <div class="field">
+    <%= f.label :importe %><br />
+    <%= f.text_field :importe %>
+  </div>
+  <div class="field">
+    <%= f.label :ruc %><br />
+    <%= f.text_field :ruc %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
