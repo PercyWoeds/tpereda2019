@@ -38,6 +38,7 @@
 
         VoidedDocumentsGenerator.new.generate
         
+<<<<<<< HEAD
         if $lcFileName !=nil 
             $lcFileName2=File.expand_path('../../../', __FILE__)+ "/"+$lcFileName
             send_file("#{$lcFileName2}", :type => 'application/pdf', :disposition => 'inline')
@@ -70,6 +71,8 @@
 
         VoidedDocumentsGenerator.new.generate2
         
+=======
+>>>>>>> edf88f4801b75546828b758d5a6c590cc8d5ef1d
         $lcFileName2=File.expand_path('../../../', __FILE__)+ "/"+$lcFileName
 
         send_file("#{$lcFileName2}", :type => 'application/pdf', :disposition => 'inline')
@@ -78,12 +81,18 @@
         voided.numero=Voided.find(1).numero.to_i + 1
         lcnumero=voided.numero.to_s
         Voided.where(:id=>'1').update_all(:numero =>lcnumero)
+<<<<<<< HEAD
 
         
+=======
+>>>>>>> edf88f4801b75546828b758d5a6c590cc8d5ef1d
         
     end     
 
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> edf88f4801b75546828b758d5a6c590cc8d5ef1d
 end

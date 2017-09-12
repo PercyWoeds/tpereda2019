@@ -30,11 +30,14 @@
       <li><%= link_to "Clientes", clients_path %></li>      
       <li><%= link_to "Mailing", mailings_path %></li>
       
+<<<<<<< HEAD
       
       <li><%= link_to "Emitir Notas ", notacredits_path %></li>
       <li><%= link_to "Nota ", nota_path %></li>
       
       
+=======
+>>>>>>> edf88f4801b75546828b758d5a6c590cc8d5ef1d
       <% if user_signed_in? %>
         
        <li> <%= link_to "Cerrar Session ", destroy_user_session_path, method: :delete, data: { confirm: "Esta seguro de salir ?" } %> </li>

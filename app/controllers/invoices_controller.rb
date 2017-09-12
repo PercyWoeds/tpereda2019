@@ -224,7 +224,11 @@ OPERACION SUJETA AL SISTEMA DE PAGO DE OBLIGACIONES TRIBUTARIAS CON EL GOBIERNO 
 
         
         $lcFileName1=File.expand_path('../../../', __FILE__)+ "/"+$lcFileName        
+<<<<<<< HEAD
         $lcFile2    =File.expand_path('../../../', __FILE__)+ "/"+$lcFilezip
+=======
+        $lcFile2 =File.expand_path('../../../', __FILE__)+ "/"+$lcFilezip
+>>>>>>> edf88f4801b75546828b758d5a6c590cc8d5ef1d
         
         ActionCorreo.bienvenido_email(@invoice).deliver
     
