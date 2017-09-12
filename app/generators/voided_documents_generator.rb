@@ -13,11 +13,9 @@ class VoidedDocumentsGenerator < DocumentGenerator
     lcmes = $lg_fecha.mon
     lcdia = $lg_fecha.mday
     
-<<<<<<< HEAD
-=======
 
 
->>>>>>> edf88f4801b75546828b758d5a6c590cc8d5ef1d
+
     @voidedlast = Voided.find(1)
 
     correlative_number = @voidedlast.numero.to_s
@@ -34,11 +32,9 @@ class VoidedDocumentsGenerator < DocumentGenerator
     generate_documents(voided_document)
     voided_document
     
-<<<<<<< HEAD
-=======
     File::open("voided_document.xml", "w") { |file| file.write(voided_document.to_xml) }
     voided_document.to_pdf
->>>>>>> edf88f4801b75546828b758d5a6c590cc8d5ef1d
+
     
   end
 
@@ -53,13 +49,11 @@ class VoidedDocumentsGenerator < DocumentGenerator
         file_name = "voided_document_error.zip"
         document_status.save_content_to(file_name)
         $aviso =" Documento de anulacion NO fue generado con exito , ver archivo #{file_name} para conocer el motivo. "
-<<<<<<< HEAD
       else
         File::open("voided_document.xml", "w") { |file| file.write(voided_document.to_xml) }
         document.to_pdf
         
-=======
->>>>>>> edf88f4801b75546828b758d5a6c590cc8d5ef1d
+
       end
     else
       raise "Invalid voided document: #{document.errors}"
