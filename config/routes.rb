@@ -1,16 +1,13 @@
 Rails.application.routes.draw do
-<<<<<<< HEAD
+  resources :mailings
+  resources :clients
+  resources :clients
+  resources :clients
   resources :nota
   resources :nota
   resources :mailings
   resources :clients
   resources :nota
-=======
-  resources :mailings
-  resources :clients
-  resources :clients
-  resources :clients
->>>>>>> edf88f4801b75546828b758d5a6c590cc8d5ef1d
 
   devise_for :users
 
@@ -36,8 +33,8 @@ Rails.application.routes.draw do
    end 
 
    resources :voideds do
-<<<<<<< HEAD
-    collection { post :anular }
+    collection { post :anular }  
+
     collection { post :anular2 }  
    
    end 
@@ -57,10 +54,6 @@ Rails.application.routes.draw do
   end 
 
 
-=======
-    collection { post :anular }  
-   end 
->>>>>>> edf88f4801b75546828b758d5a6c590cc8d5ef1d
 
    get '/about', to: 'layouts#about'
 
