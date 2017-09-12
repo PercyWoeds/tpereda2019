@@ -1,0 +1,64 @@
+
+<p id="notice"><%= notice %></p>
+<style>
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+</style>
+
+
+<h1>Listado Clientes</h1>
+
+
+<%= form_tag search_clients_path, method: :get do %>
+<%= text_field_tag :search,nil,placeholder: "Search", class:"form-control" , type:"buscar" %>
+<%= submit_tag "buscar", class:"button"  %>
+<% end %>
+
+
+
+<table style="overflow-x:auto;">
+  <thead>
+    <tr>
+      <th>Codigo</th>
+      <th>Ruc</th>
+      <th>Razon Social </th>
+      <th>Direccion</th>
+      <th>Distrito</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @clients.each do |client| %>
+      <tr>
+        <td><%= client.vcodigo %></td>
+        <td><%= client.vruc %></td>
+        <td><%= client.vrazon2 %></td>
+        <td><%= client.vdireccion %></td>
+        <td><%= client.vdistrito %></td>
+        <td><%= link_to 'Ver', client %></td>
+        <td><%= link_to 'Editar', edit_client_path(client) %></td>
+        <td><%= link_to 'Eliminar', client, method: :delete, data: { confirm: 'Esta seguro de eliminar ?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= will_paginate @clients %>
+<br>
+
+<%= link_to 'Nuevo Cliente', new_client_path %>
+
+<h2>Importar Archivo clientes "*.csv"</h2>
+<%= form_tag import_clients_path, multipart: true do %>
+  <%= file_field_tag :file %>
+  <%= submit_tag "Importar " %>
+<% end %>

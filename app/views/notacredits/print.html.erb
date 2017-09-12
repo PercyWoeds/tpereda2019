@@ -1,0 +1,15 @@
+
+<p id="notice"><%= notice %></p>
+
+<p>
+
+ <%= asset_path 'Resume.pdf' %>
+ 
+  <send_file("app/pdf_output/#{$lcFileName}.pdf", :type =>
+'application/pdf', :disposition => 'inline')
+
+  <b> <%= $aviso %> </b>
+  
+</p>
+
+<%= link_to 'Regresar', invoices_path %>

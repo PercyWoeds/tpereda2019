@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  numero: MyString
+  serie: MyString
+  factura: MyString
+  fecha: MyString
+  : 2016-05-30
+  texto: MyText
+
+two:
+  numero: MyString
+  serie: MyString
+  factura: MyString
+  fecha: MyString
+  : 2016-05-30
+  texto: MyText

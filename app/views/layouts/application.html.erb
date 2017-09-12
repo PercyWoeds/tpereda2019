@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Transportes Pereda SRL</title>
+
+  
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>   
+    
+    <%= stylesheet_link_tag 'application', 'http://fonts.googleapis.com/css?family=Raleway:400,700' %>
+   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+   
+
+</head>
+<body>
+  <div id="sidebar">
+
+    <div id="logo">
+      <%= link_to invoices_path do %>
+        <%= image_tag "" %>
+      <% end %>
+    </div>   
+  
+
+    <ul>
+      <li class="category">Website</li>
+      <li><%= link_to "Facturas", invoices_path %></li>
+      <li><%= link_to "Clientes", clients_path %></li>      
+      <li><%= link_to "Mailing", mailings_path %></li>
+      
+      
+      <li><%= link_to "Emitir Notas ", notacredits_path %></li>
+      <li><%= link_to "Nota ", nota_path %></li>
+      
+      
+      <% if user_signed_in? %>
+        
+       <li> <%= link_to "Cerrar Session ", destroy_user_session_path, method: :delete, data: { confirm: "Esta seguro de salir ?" } %> </li>
+      
+      <% end %>
+    </ul>
+    
+
+  </div>
+  
+  <div id="main_content">
+    <div id="header">
+      <% if current_page?(root_path) %>
+        <p>All Posts</p>
+      <% elsif current_page?(about_path) %>
+        <p>About</p>
+      <% else %>
+        <%= link_to "Regresar a todas las facturas ", invoices_path %>
+      <% end %>
+        
+      
+    </div>
+    <% flash.each do |name, msg| %>
+      <%= content_tag(:div, msg, class: "alert") %>
+    <% end %>
+    
+    <%= yield %>
+    
+  </div>
+
+</body>
+</html>

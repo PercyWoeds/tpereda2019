@@ -1,0 +1,60 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Vcodigo:</strong>
+  <%= @client.vcodigo %>
+</p>
+
+<p>
+  <strong>Vruc:</strong>
+  <%= @client.vruc %>
+</p>
+
+<p>
+  <strong>Vrazon2:</strong>
+  <%= @client.vrazon2 %>
+</p>
+
+<p>
+  <strong>Vdireccion:</strong>
+  <%= @client.vdireccion %>
+</p>
+
+<p>
+  <strong>Vdistrito:</strong>
+  <%= @client.vdistrito %>
+</p>
+
+<p>
+  <strong>Vprov:</strong>
+  <%= @client.vprov %>
+</p>
+
+<p>
+  <strong>Vdep:</strong>
+  <%= @client.vdep %>
+</p>
+<p>
+  <strong>Mail :</strong>
+  <%= @client.mailclient %>
+</p>
+
+<p>
+  <strong>Mail2 :</strong>
+  <%= @client.mailclient2 %>
+</p>
+
+<p>
+  <strong>Mail3 :</strong>
+  <%= @client.mailclient3 %>
+</p>
+ <% if current_user.permission_level == 'admin' %>
+  <%= link_to 'Editar', edit_client_path(@client) %> 
+ <% end %>
+ 
+<%= link_to 'Regresar', clients_path %>
+
+
+
+
+

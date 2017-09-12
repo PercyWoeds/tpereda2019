@@ -1,0 +1,243 @@
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>.:: Factura Electronica - Impresion ::.</title>
+  
+</head>
+
+<body>
+  <center>
+  <table  align="center" cellspacing="5"  width="100%" >
+      <tr>     
+    <td> 
+        <TABLE  ALIGN="left" id="box-table-a" width="100%">
+          <tbody>
+            <tr>
+              <td id="box-table-a"><B>REPORTE DE COMPROBANTE ELECTR&Oacute;NICO</B></td>
+            </tr>
+            
+            <tr class="beta" align="right">
+              <td style="height:20;" id="box-table-a" ><b>DATOS DEL COMPROBANTE:</b></td>
+            </tr>
+            <tr>
+              <td>
+                <table>
+                  <tr>
+                    <td>TIPO DE COMPROBANTE </td>
+
+                    <%if @invoice.nota_id == 1%>
+                        <td>: NOTA DE CREDITO </td>                     
+                    <%else %>
+                        <td>: NOTA DE ABONO </td>
+                    <%end %>  
+
+
+                    <td with="80px"/>
+                    <td>N&Uacute;MERO <%= @invoice.code %> </td>
+                    
+                  </tr>
+                  <tr>
+                    <td>FECHA DE EMISI&Oacute;N  </td>
+                    <td><%= @invoice.fecha %> </td>
+                    <td with="80px"> </td>
+                    <td>MONEDA </td>
+                    <td>: NUEVOS SOLES </td>
+                  </tr>                 
+                </table>
+              </td>
+            </tr>
+            
+            <tr class="beta" align="left">
+              <td style="height:20;" id="box-table-a"><b>DATOS DEL EMISOR:</b></td>
+            </tr>
+            <tr>
+              <td>
+                <table>
+                  <tr>
+                    <td>RUC </td>
+                    <td align="left" id="box-table-a">: 20424092941</td>
+                  </tr>
+                  <tr>
+                    <td id="box-table-a" >RAZ&Oacute;N SOCIAL </td>
+                    <td id="box-table-a">: TRANSPORTE PEREDA S.R.L.</td>
+                  </tr>
+                  <tr>
+                    <td>DOMICILIO FISCAL</td>
+                    <td id="box-table-a">JR.VICTOR REYNEL 187, LIMA 15081
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            
+            <tr class="beta" align="left">
+              <td style="height:20;" id="box-table-a" ><b>DATOS DEL COMPRADOR:</b></td>
+            </tr>
+            <tr>
+              <td>
+                <table>
+                  <tr>
+                    <td id="box-table-a">TIPO DE DOCUMENTO </td>
+                    <td id="box-table-a">: RUC </td>
+                  </tr>
+                  <tr>
+                    <td id="box-table-a">NUMERO DE DOCUMENTO </td>
+                    <td id="box-table-a"><%= @invoice.client.vruc %></td>
+                  </tr>
+
+                  <tr>
+                    <td>RAZ&Oacute;N SOCIAL </td>
+                    <td id="box-table-a"> <%= $lcLegalName %> </td>
+                  </tr>
+                  <tr>
+                    <td>Correo electronico 1  </td>
+                    <td id="box-table-a"> <%= $lcMail  %> </td>
+                  </tr>
+                      <tr>
+                    <td>Correo electronico 2 </td>
+                    <td id="box-table-a"> <%= $lcMail2  %> </td>
+                  </tr>
+                  <tr>
+                    <td>Correo electronico 3 </td>
+                    <td id="box-table-a"> <%= $lcMail3  %> </td>
+                  </tr>
+                  <tr>
+                    <td>Factura Vinculada </td>
+                    <td id="box-table-a"> <%= @invoice.mod_factura  %> </td>
+                  </tr>
+                  
+                  <tr>
+                    <td>  </td>
+                    <td id="box-table-a">  <%= @invoice.notum.descrip  %> </td>
+                  </tr>
+              
+                </table>
+              </td>
+            </tr>
+                  
+            <tr class="beta" align="left" >
+              <td style="height:20;" id="box-table-a"><b>DETALLE:</b></td>
+            </tr>             
+            <tr>
+              <td colspan="2">
+                <TABLE width="100%" class="form-table">
+                  <TBODY>
+                    <tr class="beta" align="center">
+                      <td width="20px" style="height:20;"><b>Cant.<br>(a)</b></td>
+                      <td width="35px" ><b>U.M.</b></td>
+                      <td width="10%"><b>C&oacute;digo</b></td>
+                      <td width="40%"><b>Descripci&oacute;n</b></td>
+                      <td width="80px" ><b>Valor Unit.<br>(b)</b></td>
+                      <td width="80px" ><b>Precio Unit.</b></td>
+                      <td width="80px" ><b>Valor V.<br>(a)*(b)</b></td>
+                    </tr>
+                      
+                    <tr>                        
+                      <td align="center"> <%= @invoice.quantity %></td>
+                      <td align="center"> GLNS</td>
+                      <td align="center">1</td>
+                      <td><%= @invoice.nombre  %> </td>
+                      <td align="right"> <%= @invoice.price %></td>
+                      <td align="right"> <%= @invoice.price %></td>
+                      <td align="right"> <%= @invoice.subtotal %></td>
+                    </tr>
+                      
+                  </TBODY>
+                </TABLE>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                <table width="100%">
+                  <tr>                    
+                    <td>
+                      <TABLE class="form-table" align="left">
+                        <TBODY>
+                          <tr>                          
+                            <td class="gamma" ><b>Total valor venta gravado</b></td>
+                            <td class="gamma" ><b>Total valor venta inafecto</b></td>
+                            <td class="gamma" ><b>Total valor venta exonerado</b></td>                            
+                            <td class="gamma" ><b>Total descuentos</b></td>
+                            <td class="gamma" ><b>Sumatoria otros tributos</b></td>
+                            <td class="gamma" ><b>Sumatoria otros cargos</b></td>
+                            <td class="gamma" ><b>Sumatoria ISC</b></td>
+                            <td class="gamma" ><b>Sumatoria IGV</b></td>
+                            <td class="gamma" ><b>Importe total</b></td>                        
+                          </tr> 
+                                                
+                          <tr class="bgn" align="right">                  
+                            <td align="right" class="totales">S/. &nbsp;  <%= @invoice.subtotal %> </td>
+                            <td align="right" class="totales">S/. &nbsp; 0</td>
+                            <td align="right" class="totales">S/. &nbsp; 0</td>
+                            <td align="right" class="totales">S/. &nbsp; 0</td>
+                            <td align="right" class="totales">S/. &nbsp; 0</td>
+                            <td align="right" class="totales">S/. &nbsp; 0</td>
+                            <td align="right" class="totales">S/. &nbsp; 0</td>
+                            <td align="right" class="totales">S/. &nbsp;  <%= @invoice.tax %></td>
+                            <td align="right" class="totales">S/. &nbsp;  <%= @invoice.total %></td>
+                          </tr>                         
+                        </TBODY>
+                      </TABLE>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2" align="center"/>
+            </tr>
+            
+            <tr>
+              <td colspan="2" align="center" class="form-table" style="padding:5px;">Este documento es un reporte con los datos tributarios de la Factura Electr&oacute;nica y no tiene la validez de una REPRESENTACIÓN IMPRESA.</td>
+            </tr>
+            <tr>
+              <td colspan="2" align="center"/>
+            </tr>
+          </tbody>
+        </TABLE>
+    </td>
+    
+      </tr>
+    </table>
+  </center>
+  <br>
+
+  <table>
+    <tr>
+      <%= form_tag sendsunat_notacredits_path, multipart: true do %>
+        <%= submit_tag "Enviar Sunat  " %>
+      <% end %>
+      
+    </tr>
+    <tr>
+      <%= form_tag print_notacredits_path, multipart: true do %>
+        <%= submit_tag  "Imprimir  " %>
+      <% end %>   
+    </tr>
+
+    <tr>
+      <%= form_tag xml_notacredits_path, multipart: true do %>
+        <%= submit_tag  "XML  " %>
+      <% end %>   
+    </tr>
+    
+    <tr>
+      <%= form_tag sendmail_notacredits_path, multipart: true do %>
+        <%= submit_tag  "Correo Electronico  " %>
+      <% end %>
+    </tr>
+
+
+    <tr>
+      
+      <%= form_tag anular2_voideds_path,  multipart: true, data: { confirm: "Esta seguro de anular este documento ?" } do  %>
+        <%= submit_tag  "Anular " %>
+      <% end %>
+
+    </tr>
+  
+    
+  </table>
+
+</body>
+</html>
