@@ -60,7 +60,7 @@ class CreditNoteGenerator < DocumentGenerator
     
     credit_note_data = {id: "#{@serie}-#{"%03d" % @@document_serial_id}", customer: associated_document.customer,
                        billing_reference: {id: associated_document.id, document_type_code: TYPES[associated_document.class.name]},
-                        discrepancy_response: {reference_id: associated_document.id, response_code: "05", description: "DESCUENTO POR AJUSTE DE PRECIO"},
+                        discrepancy_response: {reference_id: associated_document.id, response_code: "09", description: "DESCUENTO POR AJUSTE DE PRECIO"},
                         lines: [{id: "1", quantity: line.quantity.quantity, unit: 'ZZ', item: line.item,
                           price: line.price, pricing_reference: line.pricing_reference, tax_totals: line.tax_totals, line_extension_amount: line.line_extension_amount}],
                         additional_monetary_totals: [{id: "1001", payable_amount: line.price}], tax_totals: line.tax_totals, 
