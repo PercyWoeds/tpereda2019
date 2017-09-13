@@ -57,10 +57,11 @@ class CreditNoteGenerator < DocumentGenerator
 
   def credit_note_data_for_line(line, associated_document)
     legal_monetary_total = line.line_extension_amount.value + line.tax_totals.inject(0){|sum, tax| sum + tax.tax_amount.value}
+    
     credit_note_data = {id: "#{@serie}-#{"%03d" % @@document_serial_id}", customer: associated_document.customer,
                        billing_reference: {id: associated_document.id, document_type_code: TYPES[associated_document.class.name]},
-                        discrepancy_response: {reference_id: associated_document.id, response_code: "09", description: "POR AJUSTE DE PRECIO"},
-                        lines: [{id: "1", quantity: line.quantity.quantity, unit: 'GLL', item: line.item,
+                        discrepancy_response: {reference_id: associated_document.id, response_code: "05", description: "DESCUENTO POR AJUSTE DE PRECIO"},
+                        lines: [{id: "1", quantity: line.quantity.quantity, unit: 'ZZ', item: line.item,
                           price: line.price, pricing_reference: line.pricing_reference, tax_totals: line.tax_totals, line_extension_amount: line.line_extension_amount}],
                         additional_monetary_totals: [{id: "1001", payable_amount: line.price}], tax_totals: line.tax_totals, 
                         legal_monetary_total: {value: legal_monetary_total, currency: associated_document.document_currency_code}}
