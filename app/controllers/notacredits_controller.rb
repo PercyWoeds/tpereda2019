@@ -236,22 +236,30 @@ Banco de CREDITO Cuenta Corriente soles : 191-2231128-0-45 CCI : 002191002231128
           File.delete(file)
         end         
 
-      if $lcTd == 1        
+      if $lcTd == 1     
+        
+        if $lcMoneda == 2
+                $lcMonedaValor ="USD"
+        else
+                $lcMonedaValor ="PEN"
+        end
+        
         credit_note_data = { issue_date: Date.new($aa,$mm,$dd), id: $lcNumeroNota, customer: {legal_name:$lcLegalName , ruc:$lcRuc },
                              billing_reference: {id: $lcBillingReference, document_type_code: "01"},
                              discrepancy_response: {reference_id: $lcBillingReference, response_code: "09", description: $lcDescrip},
                              lines: [{id: "1", item: {id: "05", description: $lcDescrip2}, quantity: $lcCantidad, unit: 'ZZ', 
                                   price: {value: $lcPrecioCigv}, pricing_reference: $lcPrecioCigv, tax_totals: [{amount: $lcIgv, type: :igv, code: "10"}], line_extension_amount:$lcVVenta }],
-                             additional_monetary_totals: [{id: "1001", payable_amount: $lcVVenta}], tax_totals: [{amount: $lcIgv, type: :igv}], legal_monetary_total: $lcTotal}
-        
+                             additional_monetary_totals: [{id: "1001", payable_amount: $lcVVenta}], tax_totals: [{amount: $lcIgv, type: :igv}], legal_monetary_total: {value: $lcTotal, currency: $lcMonedaValor }}
+
+
         if $lcMoneda == 2
               puts "dolares "
-                $lcMonedaValor ="USD"
+          
              credit_note = SUNAT::CreditNote.new(credit_note_data)
   
             $aviso = 'Nota enviada con exito...'
         else            
-          $lcMonedaValor ="PEN"
+       
              credit_note = SUNAT::CreditNote.new(credit_note_data)
             $aviso = 'Nota enviada con exito...'
         end 

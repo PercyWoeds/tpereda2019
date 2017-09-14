@@ -9,7 +9,7 @@ require 'active_support/number_helper'
   class BasicInvoice < Document
 
     DOCUMENT_TYPE_CODE = '01' # sunat code in catalog #1
-    DEFAULT_CURRENCY_CODE = 'USD'
+    DEFAULT_CURRENCY_CODE = 'PEN'
 
     include HasTaxTotals
 
@@ -51,8 +51,8 @@ require 'active_support/number_helper'
       elsif legal_monetary_total
         legal_monetary_total.currency
       else
-        #DEFAULT_CURRENCY_CODE
-        "USD"
+        DEFAULT_CURRENCY_CODE
+        
       end
     end
 
