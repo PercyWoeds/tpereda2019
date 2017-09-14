@@ -74,7 +74,7 @@ class CreditNoteGenerator < DocumentGenerator
                         lines: [{id: "1", quantity: line.quantity.quantity, unit: 'ZZ', item: line.item,
                           price: line.price, pricing_reference: line.pricing_reference, tax_totals: line.tax_totals, line_extension_amount: line.line_extension_amount}],
                         additional_monetary_totals: [{id: "1001", payable_amount: line.price}], tax_totals: line.tax_totals, 
-                        legal_monetary_total: {value: legal_monetary_total, currency: $lcMonedaValor}}
+                        legal_monetary_total: {value: legal_monetary_total, currency: associated_document.document_currency_code }}
 
 
     @@document_serial_id += 1
