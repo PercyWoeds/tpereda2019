@@ -43,13 +43,16 @@ require 'active_support/number_helper'
     end
 
     def document_currency_code
+   
+      
       currency = get_attribute(:document_currency_code)
       if currency
         currency
       elsif legal_monetary_total
         legal_monetary_total.currency
       else
-        DEFAULT_CURRENCY_CODE
+        #DEFAULT_CURRENCY_CODE
+        "USD"
       end
     end
 
