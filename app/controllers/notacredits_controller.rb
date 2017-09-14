@@ -91,7 +91,7 @@ class NotacreditsController < ApplicationController
         $lcDocument_serial_id = $lg_serial_id2
         #$lcAutorizacion =""
         #$lcAutorizacion1=""
-          $lcMoneda    = @invoice.moneda
+          $lcMoneda    = @invoice.moneda_id
           $lcPercentIgv  =18000   
           $lcAutorizacion="Autorizado mediante Resolucion de Intendencia Nro.034-005-0004185/SUNAT del 26/10/2015 "
         $lcCuentas=" El pago del documento sera necesariamente efectuado mediante deposito en cualquiera de las siguientes cuentas bancarias:  
