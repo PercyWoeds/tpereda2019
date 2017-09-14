@@ -58,6 +58,7 @@ class CreditNoteGenerator < DocumentGenerator
     generate_documents(credit_note, pdf)
     credit_note
   end
+  
   def generate_document_for_line2(line_position, associated_document, pdf)
     line = associated_document.lines.send(line_position)
     credit_note = SUNAT::CreditNote.new(credit_note_data_for_line(line, associated_document))
