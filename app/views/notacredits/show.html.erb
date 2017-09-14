@@ -42,7 +42,13 @@
                     <td><%= @invoice.fecha %> </td>
                     <td with="80px"> </td>
                     <td>MONEDA </td>
-                    <td>: NUEVOS SOLES </td>
+                    <% if @invoice.moneda_id ==1  %>
+              
+										<td>: NUEVOS SOLES </td>
+										<% else %>
+										<td>: DOLARES  </td>
+										<% end %>
+                    
                   </tr>                 
                 </table>
               </td>
@@ -166,15 +172,15 @@
                           </tr> 
                                                 
                           <tr class="bgn" align="right">                  
-                            <td align="right" class="totales">S/. &nbsp;  <%= @invoice.subtotal %> </td>
-                            <td align="right" class="totales">S/. &nbsp; 0</td>
-                            <td align="right" class="totales">S/. &nbsp; 0</td>
-                            <td align="right" class="totales">S/. &nbsp; 0</td>
-                            <td align="right" class="totales">S/. &nbsp; 0</td>
-                            <td align="right" class="totales">S/. &nbsp; 0</td>
-                            <td align="right" class="totales">S/. &nbsp; 0</td>
-                            <td align="right" class="totales">S/. &nbsp;  <%= @invoice.tax %></td>
-                            <td align="right" class="totales">S/. &nbsp;  <%= @invoice.total %></td>
+                            <td align="right" class="totales"> &nbsp;  <%= @invoice.subtotal %> </td>
+                            <td align="right" class="totales"> &nbsp; 0</td>
+                            <td align="right" class="totales"> &nbsp; 0</td>
+                            <td align="right" class="totales"> &nbsp; 0</td>
+                            <td align="right" class="totales"> &nbsp; 0</td>
+                            <td align="right" class="totales"> &nbsp; 0</td>
+                            <td align="right" class="totales"> &nbsp; 0</td>
+                            <td align="right" class="totales"> &nbsp;  <%= @invoice.tax %></td>
+                            <td align="right" class="totales"> &nbsp;  <%= @invoice.total %></td>
                           </tr>                         
                         </TBODY>
                       </TABLE>
