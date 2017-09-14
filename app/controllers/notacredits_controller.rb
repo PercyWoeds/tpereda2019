@@ -245,7 +245,9 @@ Banco de CREDITO Cuenta Corriente soles : 191-2231128-0-45 CCI : 002191002231128
                              additional_monetary_totals: [{id: "1001", payable_amount: $lcVVenta}], tax_totals: [{amount: $lcIgv, type: :igv}], legal_monetary_total: $lcTotal}
         
         if $lcMoneda == 2
-             credit_note = SUNAT::CreditNote.new(credit_note_data,"USD")
+            DEFAULT_CURRENCY_CODE = 'USD'
+             credit_note = SUNAT::CreditNote.new(credit_note_data)
+             DEFAULT_CURRENCY_CODE = 'PEN'
             $aviso = 'Nota enviada con exito...'
         else            
              credit_note = SUNAT::CreditNote.new(credit_note_data)
