@@ -91,7 +91,7 @@ class NotacreditsController < ApplicationController
         $lcDocument_serial_id = $lg_serial_id2
         #$lcAutorizacion =""
         #$lcAutorizacion1=""
-
+          $lcMoneda    = @invoice.moneda
           $lcPercentIgv  =18000   
           $lcAutorizacion="Autorizado mediante Resolucion de Intendencia Nro.034-005-0004185/SUNAT del 26/10/2015 "
         $lcCuentas=" El pago del documento sera necesariamente efectuado mediante deposito en cualquiera de las siguientes cuentas bancarias:  
@@ -244,8 +244,16 @@ Banco de CREDITO Cuenta Corriente soles : 191-2231128-0-45 CCI : 002191002231128
                                   price: {value: $lcPrecioCigv}, pricing_reference: $lcPrecioCigv, tax_totals: [{amount: $lcIgv, type: :igv, code: "10"}], line_extension_amount:$lcVVenta }],
                              additional_monetary_totals: [{id: "1001", payable_amount: $lcVVenta}], tax_totals: [{amount: $lcIgv, type: :igv}], legal_monetary_total: $lcTotal}
         
+        if $lcMoneda == 2
+             credit_note = SUNAT::CreditNote.new(credit_note_data).for_different_currency_document2(true)
+            $aviso = 'Nota enviada con exito...'
+        else            
+             credit_note = SUNAT::CreditNote.new(credit_note_data)
+            $aviso = 'Nota enviada con exito...'
+        end 
 
-        credit_note = SUNAT::CreditNote.new(credit_note_data)
+
+       
 
         if credit_note.valid?                       
            credit_note.to_pdf    

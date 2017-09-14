@@ -45,7 +45,11 @@ class CreditNoteGenerator < DocumentGenerator
   def for_different_currency_document(associated_document, pdf=false)
     generate_document_for_line(:first, associated_document, pdf)
   end
-
+  def for_different_currency_document2(associated_document, pdf=false)
+    generate_document_for_line2(:first, associated_document, pdf)
+  end
+  
+  
   private 
 
   def generate_document_for_line(line_position, associated_document, pdf)
@@ -54,7 +58,12 @@ class CreditNoteGenerator < DocumentGenerator
     generate_documents(credit_note, pdf)
     credit_note
   end
-
+  def generate_document_for_line2(line_position, associated_document, pdf)
+    line = associated_document.lines.send(line_position)
+    credit_note = SUNAT::CreditNote.new(credit_note_data_for_line(line, associated_document))
+    generate_documents2(credit_note, pdf)
+    credit_note
+  end
   def credit_note_data_for_line(line, associated_document)
     legal_monetary_total = line.line_extension_amount.value + line.tax_totals.inject(0){|sum, tax| sum + tax.tax_amount.value}
     

@@ -37,6 +37,43 @@ class VoidedDocumentsGenerator < DocumentGenerator
 
     
   end
+  
+  def generate2
+
+    lcanio= $lg_fecha.year
+    lcmes = $lg_fecha.mon
+    lcdia = $lg_fecha.mday    
+
+
+    @voidedlast = Voided.find(1)
+
+    correlative_number = @voidedlast.numero.to_s
+
+    issue_date = Date.new(lcanio,lcmes,lcdia)
+    
+    lcNumeroFactura=$lg_serial_id2
+
+    if $lcTd  == 1
+
+    voided_documents_data = {reference_date: Date.new(lcanio,lcmes,lcdia), issue_date: issue_date, id: SUNAT::VoidedDocuments.generate_id(issue_date, correlative_number), correlative_number: correlative_number,
+                         lines:[{line_id: "1", document_type_code: "07", document_serial_id: "FF01", document_number_id: lcNumeroFactura  , void_reason: "Error en datos consignados" }]}
+    else
+    voided_documents_data = {reference_date: Date.new(lcanio,lcmes,lcdia), issue_date: issue_date, id: SUNAT::VoidedDocuments.generate_id(issue_date, correlative_number), correlative_number: correlative_number,
+                         lines:[{line_id: "1", document_type_code: "06", document_serial_id: "FF01", document_number_id: lcNumeroFactura  , void_reason: "Error en datos consignados" }]}
+    
+    end 
+  
+
+    voided_document = SUNAT::VoidedDocuments.new(voided_documents_data)
+
+    generate_documents(voided_document)
+    voided_document
+    
+    File::open("voided_document.xml", "w") { |file| file.write(voided_document.to_xml) }
+    voided_document.to_pdf
+    
+  end
+
 
   def generate_documents(document)
     if document.valid?
