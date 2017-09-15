@@ -4,7 +4,7 @@ validates_presence_of  :code,:subtotal,:tax,:total,:mod_factura,:nombre
 validates_uniqueness_of :code
  
 belongs_to :client
-belongs_to :notum 
+belongs_to :nota 
 
     def self.import(file)
           CSV.foreach(file.path, headers: true) do |row|
