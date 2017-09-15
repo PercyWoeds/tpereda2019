@@ -51,8 +51,9 @@ class VoidedDocumentsGenerator < DocumentGenerator
 
     issue_date = Date.new(lcanio,lcmes,lcdia)
     
-    lcNumeroFactura=$lg_serial_id2
-
+    lcNumeroFactura =  $lg_serial_id2
+    puts lcNumeroFactura
+    
     if $lcTd  == 1
 
     voided_documents_data = {reference_date: Date.new(lcanio,lcmes,lcdia), issue_date: issue_date, id: SUNAT::VoidedDocuments.generate_id(issue_date, correlative_number), correlative_number: correlative_number,
