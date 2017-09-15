@@ -182,13 +182,9 @@ Banco de CREDITO Cuenta Corriente soles : 191-2231128-0-45 CCI : 002191002231128
         $lcGuiaRemision =""      
         @@document_serial_id =""
         $lg_serial_id=""
-
+        
           
-        else
-          puts "Invalid document, ignoring output: #{credit_note.errors.messages}"
-          $aviso = "Invalid document, ignoring output: #{credit_note.errors.messages}"
-        end
-
+        
       else
 
         debit_note_data = { issue_date: Date.new($aa,$mm,$dd), id: $lcNumeroNota, customer: {legal_name:$lcLegalName , ruc:$lcRuc },
