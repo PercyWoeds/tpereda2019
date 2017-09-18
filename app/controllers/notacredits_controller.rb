@@ -143,42 +143,32 @@ Banco de CREDITO Cuenta Corriente soles : 191-2231128-0-45 CCI : 002191002231128
                 $lcMonedaValor ="PEN"
         end
            
-      # credit_note_data = { issue_date: Date.new($aa,$mm,$dd), id: $lcNumeroNota, customer: {legal_name:$lcLegalName , ruc:$lcRuc },
-      #                       billing_reference: {id: $lcBillingReference, document_type_code: "01"},
-      #                       discrepancy_response: {reference_id: $lcBillingReference, response_code: "09", description: $lcDescrip},
-      #                       lines: [{id: "1", item: {id: "05", description: $lcDescrip2}, quantity: $lcCantidad, unit: 'ZZ', 
-      #                             price: {value: $lcPrecioCigv}, pricing_reference: $lcPrecioCigv, tax_totals: [{amount: $lcIgv, type: :igv, code: "10"}], line_extension_amount:$lcVVenta }],
-      #                       additional_monetary_totals: [{id: "1001", payable_amount: $lcVVenta , currency: $lcMonedaValor}], tax_totals: [{amount: $lcIgv, type: :igv , currency: $lcMonedaValor} ], legal_monetary_total: {value: $lcTotal, currency: $lcMonedaValor }}
+       credit_note_data = { issue_date: Date.new($aa,$mm,$dd), id: $lcNumeroNota, customer: {legal_name:$lcLegalName , ruc:$lcRuc },
+                             billing_reference: {id: $lcBillingReference, document_type_code: "01"},
+                             discrepancy_response: {reference_id: $lcBillingReference, response_code: "09", description: $lcDescrip},
+                             lines: [{id: "1", item: {id: "05", description: $lcDescrip2}, quantity: $lcCantidad, unit: 'ZZ', 
+                                   price: {value: $lcPrecioCigv}, pricing_reference: {amount: {value: $lcPrecioCIgv , currency: $lcMonedaValor }, type: "01" }, tax_totals: [{amount: $lcIgv, type: :igv, code: "10"}], line_extension_amount:$lcVVenta }],
+                             additional_monetary_totals: [{id: "1001", payable_amount: $lcVVenta , currency: $lcMonedaValor}], tax_totals: [{amount: $lcIgv, type: :igv , currency: $lcMonedaValor} ], legal_monetary_total: {value: $lcTotal, currency: $lcMonedaValor }}
 
-      #     SUNAT.environment = :production 
-      #       credit_note = SUNAT::CreditNote.new(credit_note_data)
+           SUNAT.environment = :production 
+           credit_note = SUNAT::CreditNote.new(credit_note_data)
   
            
-      #   if credit_note.valid?
-      #     begin
-      #     credit_note.deliver!    
-      #     rescue Savon::SOAPFault => e
-      #         puts "Error generating document for case : #{e}"              
-      #         $aviso ="Error generating document for case : #{e}"              
-      #     end
+         if credit_note.valid?
+           begin
+           credit_note.deliver!    
+           rescue Savon::SOAPFault => e
+               puts "Error generating document for case : #{e}"              
+               $aviso ="Error generating document for case : #{e}"              
+           end
 
-      #     File::open("credit_note.xml", "w") { |file| file.write(credit_note.to_xml) }
+           File::open("credit_note.xml", "w") { |file| file.write(credit_note.to_xml) }
 
-      #     credit_note.to_pdf
+           credit_note.to_pdf
       
       
       
       
-          $lg_serial_id=$lcDocument_serial_id
-          case_3  = InvoiceGenerator.new(1, 3, 1, "FF01").with_different_currency2(true)
-      
-          $lg_serial_id=$lcNumeroNota
-          case_6 = CreditNoteGenerator.new(1, 6, "FF01").for_different_currency_document_document2(case_3,true)
-          $aviso = 'Nota de credito enviada con exito...'
-           $lcFileName1=File.expand_path('../../../', __FILE__)+ "/"+$lcFileName
-        
-        send_file("#{$lcFileName1}", :type => 'application/pdf', :disposition => 'inline')
-        
         $lcGuiaRemision =""      
         @@document_serial_id =""
         $lg_serial_id=""
