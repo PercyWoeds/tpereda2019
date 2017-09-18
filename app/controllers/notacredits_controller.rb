@@ -165,7 +165,11 @@ Banco de CREDITO Cuenta Corriente soles : 191-2231128-0-45 CCI : 002191002231128
            File::open("credit_note.xml", "w") { |file| file.write(credit_note.to_xml) }
 
            credit_note.to_pdf
-      
+          else
+            
+             puts "Invalid document, ignoring output: #{credit_note.errors.messages}"
+             
+          end 
       
       
       
