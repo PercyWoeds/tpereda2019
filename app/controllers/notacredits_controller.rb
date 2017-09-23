@@ -143,11 +143,12 @@ Banco de CREDITO Cuenta Corriente soles : 191-2231128-0-45 CCI : 002191002231128
                 $lcMonedaValor ="PEN"
         end
            
+           
        credit_note_data = { issue_date: Date.new($aa,$mm,$dd), id: $lcNumeroNota, customer: {legal_name:$lcLegalName , ruc:$lcRuc },
                              billing_reference: {id: $lcBillingReference, document_type_code: "01"},
                              discrepancy_response: {reference_id: $lcBillingReference, response_code: "09", description: $lcDescrip},
                              lines: [{id: "1", item: {id: "05", description: $lcDescrip2}, quantity: $lcCantidad, unit: 'ZZ', 
-                                   price: {value: $lcPrecioCigv}, pricing_reference: {amount: {value: $lcPrecioCIgv , currency: $lcMonedaValor }, type: "01" }, tax_totals: [{amount: $lcIgv, type: :igv, code: "10"}], line_extension_amount:$lcVVenta }],
+                             price: {value: $lcPrecioSigv,currency: $lcMonedaValor  }, pricing_reference: {amount: {value: $lcPrecioCIgv , currency: $lcMonedaValor }, type: "01" }, tax_totals: [{amount: $lcIgv, type: :igv, code: "10"}], line_extension_amount:$lcVVenta }],
                              additional_monetary_totals: [{id: "1001", payable_amount: $lcVVenta , currency: $lcMonedaValor}], tax_totals: [{amount: $lcIgv, type: :igv , currency: $lcMonedaValor} ], legal_monetary_total: {value: $lcTotal, currency: $lcMonedaValor }}
 
            SUNAT.environment = :production 
