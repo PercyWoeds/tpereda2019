@@ -49,8 +49,9 @@ tr:nth-child(even){background-color: #f2f2f2}
         <td><%= client.vdistrito %></td>
         <td><%= link_to 'Ver', client %></td>
         
-        <% if current_user.permission_level == 'admin' %>
+        
           <td><%= link_to 'Editar', edit_client_path(client) %></td>
+        <% if current_user.permission_level == 'admin' %>
           <td><%= link_to 'Eliminar', client, method: :delete, data: { confirm: 'Esta seguro de eliminar ?' } %></td>
         <% end %>    
         
