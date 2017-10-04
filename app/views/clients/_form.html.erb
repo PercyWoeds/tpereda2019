@@ -10,7 +10,7 @@
       </ul>
     </div>
   <% end %>
-  <% if current_user.permission_level == 'admin' %>
+  
 
   <div class="field">
     <%= f.label :vcodigo %><br>
@@ -56,53 +56,6 @@
     <%= f.text_field :mailclient3 %>
   </div>
   
-  <%else %>
-  
-  <div class="field">
-    <%= f.label :vcodigo %><br>
-    <%= f.text_field :vcodigo , :readonly => true %>
-  </div>
-  <div class="field">
-    <%= f.label :vruc %><br>
-    <%= f.text_field :vruc, :readonly => true %>
-  </div>
-  <div class="field">
-    <%= f.label :vrazon2 %><br>
-    <%= f.text_field :vrazon2, :readonly => true %>
-  </div>
-  <div class="field">
-    <%= f.label :vdireccion %><br>
-    <%= f.text_field :vdireccion %>
-  </div>
-  <div class="field">
-    <%= f.label :vdistrito %><br>
-    <%= f.text_field :vdistrito %>
-  </div>
-  <div class="field">
-    <%= f.label :vprov %><br>
-    <%= f.text_field :vprov %>
-  </div>
-  <div class="field">
-    <%= f.label :vdep %><br>
-    <%= f.text_field :vdep %>
-  </div>
-
-  <div class="field">
-    <%= f.label :mailclient %> <br>
-    <%= f.text_field :mailclient %>
-  </div>
-  
-  <div class="field">
-    <%= f.label :mailclient2 %> <br>
-    <%= f.text_field :mailclient2 %>
-  </div>
-  
-  <div class="field">
-    <%= f.label :mailclient3 %> <br>
-    <%= f.text_field :mailclient3 %>
-  </div>
-  
-  <%end %>
   <div class="actions">
     <%= f.submit %>
   </div>
