@@ -128,3 +128,4 @@ Migrating to CreateNota (20170913204660)
             WHERE name='index_users_on_email' AND type='index'
 
   [1m[36mNotum Load (0.3ms)[0m  [1mSELECT  "nota".* FROM "nota"  ORDER BY "nota"."id" DESC LIMIT 1[0m
+  [1m[36mClient Load (0.3ms)[0m  [1mSELECT  "clients".* FROM "clients"  ORDER BY "clients"."id" DESC LIMIT 1[0m

@@ -1,6 +1,9 @@
 class Client < ActiveRecord::Base
 
+validates_presence_of :vcodigo,:vruc, :vrazon2, :vdireccion 
+
 	has_many :invoices, :class_name=> 'Invoice',	:foreign_key => 'vcodigo' 
+	
 	
 	attr_accessible :vcodigo, :vdep, :vdireccion, :vdistrito, :vprov, :vrazon2, :vruc, :mailclient, :mailclient2, :mailclient3
 
