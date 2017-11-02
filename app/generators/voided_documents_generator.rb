@@ -68,11 +68,16 @@ class VoidedDocumentsGenerator < DocumentGenerator
     voided_document = SUNAT::VoidedDocuments.new(voided_documents_data)
 
     generate_documents(voided_document)
-    voided_document
-    
-    File::open("voided_document.xml", "w") { |file| file.write(voided_document.to_xml) }
-    voided_document.to_pdf
-    
+    $lcValido = "0"
+    if voided_document.valid?
+      voided_document
+      File::open("voided_document.xml", "w") { |file| file.write(voided_document.to_xml) }
+      voided_document.to_pdf
+      $lcValido = "1"
+     else
+      $lcValido = "0"
+      raise "Invalid voided document: #{voided_document.errors}"
+    end 
   end
 
 
