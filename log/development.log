@@ -129,3 +129,153 @@ Migrating to CreateNota (20170913204660)
 
   [1m[36mNotum Load (0.3ms)[0m  [1mSELECT  "nota".* FROM "nota"  ORDER BY "nota"."id" DESC LIMIT 1[0m
   [1m[36mClient Load (0.3ms)[0m  [1mSELECT  "clients".* FROM "clients"  ORDER BY "clients"."id" DESC LIMIT 1[0m
+  [1m[36mInvoice Load (0.2ms)[0m  [1mSELECT  "invoices".* FROM "invoices"  ORDER BY "invoices"."id" DESC LIMIT 1[0m
+
+
+Started GET "/" for 148.102.21.29 at 2017-11-02 16:38:26 +0000
+Cannot render console from 148.102.21.29! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by InvoicesController#index as HTML
+Completed 401 Unauthorized in 20ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 148.102.21.29 at 2017-11-02 16:38:26 +0000
+Cannot render console from 148.102.21.29! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (9.9ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (41.7ms)
+DEPRECATION WARNING: Extra .css in SCSS file is unnecessary. Rename /home/ubuntu/workspace/app/assets/stylesheets/_normalize.css.scss to /home/ubuntu/workspace/app/assets/stylesheets/_normalize.scss. (called from _app_views_layouts_application_html_erb___42715796200785780_70256678565140 at /home/ubuntu/workspace/app/views/layouts/application.html.erb:8)
+DEPRECATION WARNING: Extra .css in SCSS file is unnecessary. Rename /home/ubuntu/workspace/app/assets/stylesheets/_normalize.css.scss to /home/ubuntu/workspace/app/assets/stylesheets/_normalize.scss. (called from _app_views_layouts_application_html_erb___42715796200785780_70256678565140 at /home/ubuntu/workspace/app/views/layouts/application.html.erb:8)
+Completed 200 OK in 1124ms (Views: 1109.7ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/_normalize.self-8279e206a0ed5e2278f17cfc0cca7f8c879e0505e63abddf9b6e346eba809d4e.css?body=1" for 148.102.21.29 at 2017-11-02 16:38:28 +0000
+Cannot render console from 148.102.21.29! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/client.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 148.102.21.29 at 2017-11-02 16:38:28 +0000
+Cannot render console from 148.102.21.29! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/clients.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 148.102.21.29 at 2017-11-02 16:38:28 +0000
+Cannot render console from 148.102.21.29! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/invoice.self-03536d964a2f1f577ebd652600ab0c80c7d088b61d0eee6ccc7827446f55b9e4.css?body=1" for 148.102.21.29 at 2017-11-02 16:38:28 +0000
+Cannot render console from 148.102.21.29! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/layout.self-4af751d8d9aa9a6cd653092a342655c8798b04c175d6c9baa34f5d392871c260.css?body=1" for 148.102.21.29 at 2017-11-02 16:38:28 +0000
+Cannot render console from 148.102.21.29! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/mailings.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 148.102.21.29 at 2017-11-02 16:38:28 +0000
+Cannot render console from 148.102.21.29! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/nota.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 148.102.21.29 at 2017-11-02 16:38:28 +0000
+Cannot render console from 148.102.21.29! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/notacredits.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 148.102.21.29 at 2017-11-02 16:38:28 +0000
+Cannot render console from 148.102.21.29! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/notas.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 148.102.21.29 at 2017-11-02 16:38:28 +0000
+Cannot render console from 148.102.21.29! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/scaffolds.self-2ab154d7d188afed4429e9de74aeb9e3437c4298c9991bd9165e0385c2e3104a.css?body=1" for 148.102.21.29 at 2017-11-02 16:38:28 +0000
+Cannot render console from 148.102.21.29! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/voided_invoice.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 148.102.21.29 at 2017-11-02 16:38:28 +0000
+Cannot render console from 148.102.21.29! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/application.self-191f2c41831464d492f75c8706cec5fe561f794488a9eee5ae850ce3ac641888.css?body=1" for 148.102.21.29 at 2017-11-02 16:38:28 +0000
+Cannot render console from 148.102.21.29! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for 148.102.21.29 at 2017-11-02 16:38:28 +0000
+Cannot render console from 148.102.21.29! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for 148.102.21.29 at 2017-11-02 16:38:28 +0000
+Cannot render console from 148.102.21.29! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/client.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 148.102.21.29 at 2017-11-02 16:38:28 +0000
+Cannot render console from 148.102.21.29! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/clients.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 148.102.21.29 at 2017-11-02 16:38:28 +0000
+Cannot render console from 148.102.21.29! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/invoice.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 148.102.21.29 at 2017-11-02 16:38:28 +0000
+Cannot render console from 148.102.21.29! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/mailings.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 148.102.21.29 at 2017-11-02 16:38:29 +0000
+Cannot render console from 148.102.21.29! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/nota.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 148.102.21.29 at 2017-11-02 16:38:29 +0000
+Cannot render console from 148.102.21.29! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/notas.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 148.102.21.29 at 2017-11-02 16:38:29 +0000
+Cannot render console from 148.102.21.29! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/notacredits.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 148.102.21.29 at 2017-11-02 16:38:29 +0000
+Cannot render console from 148.102.21.29! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/voided_invoice.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 148.102.21.29 at 2017-11-02 16:38:29 +0000
+Cannot render console from 148.102.21.29! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/application.self-5fbc25352c4358c0c047cbe0858f56e4d446bf5c3166654250a3271c6ddc9f51.js?body=1" for 148.102.21.29 at 2017-11-02 16:38:29 +0000
+Cannot render console from 148.102.21.29! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/invoices" for 148.102.21.29 at 2017-11-02 16:38:33 +0000
+Cannot render console from 148.102.21.29! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by InvoicesController#index as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 148.102.21.29 at 2017-11-02 16:38:34 +0000
+Cannot render console from 148.102.21.29! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (4.3ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (9.5ms)
+Completed 200 OK in 44ms (Views: 43.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 148.102.21.29 at 2017-11-02 16:38:40 +0000
+Cannot render console from 148.102.21.29! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"tZQOxUpumKgzO+xIiA+lS4SzYz10zo0D8J4uzHuOnsYVfGlOcP4yAPYz4q6P6EojqeIPwwn1aXIwr5tD6lnWLA==", "user"=>{"email"=>"percywoeds@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."email" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["email", "percywoeds@gmail.com"]]
+Completed 401 Unauthorized in 12ms (ActiveRecord: 0.3ms)
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"tZQOxUpumKgzO+xIiA+lS4SzYz10zo0D8J4uzHuOnsYVfGlOcP4yAPYz4q6P6EojqeIPwwn1aXIwr5tD6lnWLA==", "user"=>{"email"=>"percywoeds@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  Rendered devise/shared/_links.html.erb (4.0ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (9.7ms)
+Completed 200 OK in 285ms (Views: 44.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 148.102.21.29 at 2017-11-02 16:38:44 +0000
+Cannot render console from 148.102.21.29! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"LTiuULxRZ+hSqq8yiXRnFvVJzwDREYMdWQDbsHo1anGN0MnbhsHNQJeiodSOk4h+2Bij/qwqZ2yZMW4/6+Iimw==", "user"=>{"email"=>"percywoeds@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."email" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["email", "percywoeds@gmail.com"]]
+Completed 401 Unauthorized in 2ms (ActiveRecord: 0.1ms)
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"LTiuULxRZ+hSqq8yiXRnFvVJzwDREYMdWQDbsHo1anGN0MnbhsHNQJeiodSOk4h+2Bij/qwqZ2yZMW4/6+Iimw==", "user"=>{"email"=>"percywoeds@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  Rendered devise/shared/_links.html.erb (3.8ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (9.1ms)
+Completed 200 OK in 228ms (Views: 40.9ms | ActiveRecord: 0.0ms)
