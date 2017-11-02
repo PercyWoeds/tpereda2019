@@ -5,7 +5,7 @@
          @invoices=Invoice.find_by_sql('Select invoices.*,clients.vrazon2,mailings.flag1 from invoices 
             LEFT JOIN mailings ON invoices.numero = mailings.numero
             LEFT  JOIN clients ON invoices.cliente = clients.vcodigo            
-            order by fecha desc').paginate(:page => params[:page])
+            order by numero::int desc').paginate(:page => params[:page])
     end     
     
     def search
