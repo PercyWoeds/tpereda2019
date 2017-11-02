@@ -279,3 +279,4 @@ Processing by Devise::SessionsController#new as HTML
   Rendered devise/shared/_links.html.erb (3.8ms)
   Rendered devise/sessions/new.html.erb within layouts/application (9.1ms)
 Completed 200 OK in 228ms (Views: 40.9ms | ActiveRecord: 0.0ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" DESC LIMIT 1[0m
