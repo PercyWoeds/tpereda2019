@@ -42,11 +42,11 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
   
   config.action_mailer.smtp_settings = {
-    address:              'send.one.com',
+    address:              'smtp.gmail.com',
     port:                 587,
-    domain:               'one.com',
-    user_name:            'facturaselectronicas@tpereda.com.pe',
-    password:             'Tpereda336',
+    domain:               'gmail.com',
+    user_name:            'percywoeds@gmail.com',
+    password:             'maldito2017',
     authentication:       'plain',
     enable_starttls_auto: true  }
 
