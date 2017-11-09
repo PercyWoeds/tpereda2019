@@ -5,7 +5,7 @@
          @invoices=Invoice.find_by_sql('Select invoices.*,clients.vrazon2,mailings.flag1 from invoices 
             LEFT JOIN mailings ON invoices.numero = mailings.numero
             LEFT  JOIN clients ON invoices.cliente = clients.vcodigo            
-            order by invoices.numero desc').paginate(:page => params[:page])
+            order by invoices.numero::int desc').paginate(:page => params[:page])
     end     
     
     def search
@@ -203,7 +203,7 @@ OPERACION SUJETA AL SISTEMA DE PAGO DE OBLIGACIONES TRIBUTARIAS CON EL GOBIERNO 
         require 'sunat'
         require './config/config'
         require './app/generators/invoice_generator'
-        require './app/generators/credit_note_generator'
+        require './app/generators/credit_note_genevlrrator'
         require './app/generators/debit_note_generator'
         require './app/generators/receipt_generator'
         require './app/generators/daily_receipt_summary_generator'
