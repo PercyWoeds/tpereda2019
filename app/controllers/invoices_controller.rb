@@ -203,7 +203,7 @@ OPERACION SUJETA AL SISTEMA DE PAGO DE OBLIGACIONES TRIBUTARIAS CON EL GOBIERNO 
         require 'sunat'
         require './config/config'
         require './app/generators/invoice_generator'
-        require './app/generators/credit_note_genevlrrator'
+        require './app/generators/credit_note_generator'
         require './app/generators/debit_note_generator'
         require './app/generators/receipt_generator'
         require './app/generators/daily_receipt_summary_generator'
