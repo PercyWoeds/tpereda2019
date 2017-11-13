@@ -151,10 +151,21 @@ OPERACION SUJETA AL SISTEMA DE PAGO DE OBLIGACIONES TRIBUTARIAS CON EL GOBIERNO 
                              billing_reference: {id: $lcBillingReference, document_type_code: "01"},
                              discrepancy_response: {reference_id: $lcBillingReference, response_code: "09", description: $lcDescrip},
                              lines: [{id: "1", item: {id: "05", description: $lcDescrip2}, quantity: $lcCantidad, unit: 'ZZ', 
-                             price: {value: $lcPrecioSigv,currency: $lcMonedaValor  }, pricing_reference: {amount: {value: $lcPrecioCIgv , currency: $lcMonedaValor }, type: "01" }, tax_totals: [{amount: $lcIgv, type: :igv, code: "10"}], line_extension_amount:$lcVVenta }],
-                             additional_monetary_totals: [{id: "1001", payable_amount: $lcVVenta , currency: $lcMonedaValor}], tax_totals: [{amount: $lcIgv, type: :igv , currency: $lcMonedaValor} ], legal_monetary_total: {value: $lcTotal, currency: $lcMonedaValor }}
+                             price: {value: $lcPrecioSigv,currency: $lcMonedaValor  }, 
+                             pricing_reference: {amount: {value: $lcPrecioCIgv , currency: $lcMonedaValor }, type: "01" }, 
+                             tax_totals: [{amount: { value:$lcIgv, currency: $lcMonedaValor }, type: :igv, code: "10"}],
+                             line_extension_amount:  {value:$lcVVenta, currency: $lcMonedaValor}}],
+                             additional_monetary_totals: [{id: "1001", 
+                              payable_amount: { value: $lcVVenta ,   currency: $lcMonedaValor }}],
+                             tax_totals: [{amount: {value: $lcIgv , currency: $lcMonedaValor }, type: :igv }],
+                             legal_monetary_total:{value: $lcTotal, currency: $lcMonedaValor }}
 
-           SUNAT.environment = :production 
+
+
+
+
+
+           SUNAT.environment = :test 
            credit_note = SUNAT::CreditNote.new(credit_note_data)
   
            
