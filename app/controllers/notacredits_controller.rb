@@ -165,7 +165,7 @@ OPERACION SUJETA AL SISTEMA DE PAGO DE OBLIGACIONES TRIBUTARIAS CON EL GOBIERNO 
 
 
 
-           SUNAT.environment = :test 
+           SUNAT.environment = :production  
            credit_note = SUNAT::CreditNote.new(credit_note_data)
   
            
