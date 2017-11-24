@@ -126,8 +126,6 @@ class InvoiceGenerator < DocumentGenerator
     SUNAT::Invoice
   end
 
-  
-   
   #$lcid= "#{@serie}-#{"%06d" % @@document_serial_id }"
         
   protected

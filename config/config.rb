@@ -13,8 +13,8 @@ SUNAT.configure do |config|
   config.signature do |s|
     s.party_id    = "20424092941"
     s.party_name  = "TRANSPORTES PEREDA SRL"
-    s.cert_file   = File.join(Dir.pwd, './app/keys', 'certificate_file.crt')
-    s.pk_file     = File.join(Dir.pwd, './app/keys', 'CERTIFICADO.key') 
+    s.cert_file   = File.join(Dir.pwd, './app/keys', 'certificate_file2.crt')
+    s.pk_file     = File.join(Dir.pwd, './app/keys', 'CERTIFICADO2.key') 
   end
 
   config.supplier do |s|

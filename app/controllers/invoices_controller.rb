@@ -44,13 +44,15 @@
         $lcMail         = @list[0].mailclient
         $lcMail2        = @list[0].mailclient2
         $lcMail3        = @list[0].mailclient3
+        
         legal_name_spaces =  @list[0].vrazon2.lstrip
         
         if legal_name_spaces == nil
-            $lcLegalName = @list[0].vrazon2
+            $lcLegalName    = @list[0].vrazon2
         else
             $lcLegalName = @list[0].vrazon2.lstrip 
         end
+        
         
         $lcDirCli       = @list[0].vdireccion   
         $lcDisCli       = @list[0].vdistrito
@@ -103,7 +105,9 @@
             $lcDes2 = ""
         end 
         
-        $lcDescrip = $lcDes1 
+        
+        
+        $lcDescrip = $lcDes1.lstrip 
 
         $lcFormaPago = @invoice.formapago 
         
