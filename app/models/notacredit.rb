@@ -7,6 +7,14 @@ validates_uniqueness_of :code, scope: :nota_id
 belongs_to :client
 belongs_to :notum
 
+    def get_nombre
+      if self.nota_id = 1 
+        return "CREDITO"
+      else
+        return "DEBITO "
+      end 
+    end   
+      
     def self.import(file)
           CSV.foreach(file.path, headers: true) do |row|
           Notacredit.create! row.to_hash 
