@@ -9,7 +9,7 @@ class NotacreditsController < ApplicationController
   # GET /notacredits
   # GET /notacredits.json
   def index
-    @notacredits = Notacredit.all
+    @notacredits = Notacredit.all.order(:nota_id,:fecha)
   respond_to do |format|
     format.html
     format.csv { send_data @notacredits.to_csv }
