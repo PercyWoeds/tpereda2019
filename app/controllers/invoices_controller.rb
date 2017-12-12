@@ -188,13 +188,21 @@ OPERACION SUJETA AL SISTEMA DE PAGO DE OBLIGACIONES TRIBUTARIAS CON EL GOBIERNO 
         files_to_clean.each do |file|
           File.delete(file)
         end         
+        
+        if $lcTd == "FT"
          
-        if $lcMoneda == 2
-            case_3  = InvoiceGenerator.new(1, 3, 1, "FF01").with_igv2(true)
-        else        
-            case_49 = InvoiceGenerator.new(7, 49, 1, "FF01").with_different_currency2(true)
+            if $lcMoneda == 2
+                case_3  = InvoiceGenerator.new(1, 3, 1, "FF01").with_igv2(true)
+            else        
+                case_49 = InvoiceGenerator.new(7, 49, 1, "FF01").with_different_currency2(true)
+            end 
+        else
+            if $lcMoneda == 2
+                case_52 = ReceiptGenerator.new(8, 52, 4, "BB11").with_igv
+            else        
+                case_96 = ReceiptGenerator.new(12, 96, 3, "BB50").with_different_currency
+            end 
         end 
-
         
         $lcFileName1=File.expand_path('../../../', __FILE__)+ "/"+$lcFileName
         
