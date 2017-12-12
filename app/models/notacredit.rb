@@ -8,7 +8,7 @@ belongs_to :client
 belongs_to :notum
 
     def get_nombre
-      if self.nota_id = 1 
+      if self.nota_id == 1 
         return "CREDITO"
       else
         return "DEBITO "
