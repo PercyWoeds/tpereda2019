@@ -6,11 +6,9 @@
   <thead>
     <tr>
       <th>Fecha</th>
-
+      <th>Nota</th>
       <th>Code</th>
       <th>Cliente</th>
-      <th>Nota</th>
-      
       <th>Subtotal</th>
       <th>Tax</th>
       <th>Total</th>
@@ -26,10 +24,9 @@
     <% @notacredits.each do |notacredit| %>
       <tr>
         <td><%= notacredit.fecha.strftime("%d/%m/%Y") %></td>
+        <td><%= notacredit.nota_id %></td>
         <td><%= notacredit.code %></td>
         <td><%= notacredit.client.vrazon2 %></td>
-        <td><%= notacredit.nota_id %></td>
-        
         <td><%= notacredit.subtotal %></td>
         <td><%= notacredit.tax %></td>
         <td><%= notacredit.total %></td>
