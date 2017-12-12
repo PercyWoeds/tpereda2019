@@ -153,15 +153,21 @@ OPERACION SUJETA AL SISTEMA DE PAGO DE OBLIGACIONES TRIBUTARIAS CON EL GOBIERNO 
           File.delete(file)
         end 
 
-
-        if $lcMoneda == 2
-            case_3  = InvoiceGenerator.new(1, 3, 1, "FF01").with_igv(true)
-            $aviso = 'Factura enviada con exito...'
-        else            
-            case_49 = InvoiceGenerator.new(7, 49, 1, "FF01").with_different_currency(true)
-            $aviso = 'Factura enviada con exito...'
-        end 
-
+         if $lcTd == "FT"
+            if $lcMoneda == 2
+                case_3  = InvoiceGenerator.new(1, 3, 1, "FF01").with_igv(true)
+                $aviso = 'Factura enviada con exito...'
+            else            
+                case_49 = InvoiceGenerator.new(7, 49, 1, "FF01").with_different_currency(true)
+                $aviso = 'Factura enviada con exito...'
+            end 
+        else
+            if $lcMoneda == 2
+                case_52 = ReceiptGenerator.new(8, 52, 4, "BB01").with_igv
+            else        
+                case_96 = ReceiptGenerator.new(12, 96, 3, "BB01").with_different_currency
+            end 
+        end     
         $lcGuiaRemision =""      
         @@document_serial_id =""
         $lg_serial_id=""
@@ -198,9 +204,9 @@ OPERACION SUJETA AL SISTEMA DE PAGO DE OBLIGACIONES TRIBUTARIAS CON EL GOBIERNO 
             end 
         else
             if $lcMoneda == 2
-                case_52 = ReceiptGenerator.new(8, 52, 4, "BB11").with_igv
+                case_52 = ReceiptGenerator.new(8, 52, 4, "BB01").with_igv2
             else        
-                case_96 = ReceiptGenerator.new(12, 96, 3, "BB50").with_different_currency
+                case_96 = ReceiptGenerator.new(12, 96, 3, "BB01").with_different_currency2
             end 
         end 
         
