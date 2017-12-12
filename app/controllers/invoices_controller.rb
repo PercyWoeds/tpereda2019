@@ -163,9 +163,9 @@ OPERACION SUJETA AL SISTEMA DE PAGO DE OBLIGACIONES TRIBUTARIAS CON EL GOBIERNO 
             end 
         else
             if $lcMoneda == 2
-                case_52 = ReceiptGenerator.new(8, 52, 4, "BB01").with_igv(true)
+                case_52 = ReceiptGenerator.new(8, 52, 1, "BB01").with_igv(true)
             else        
-                case_96 = ReceiptGenerator.new(12, 96, 3, "BB01").with_different_currency(true)
+                case_96 = ReceiptGenerator.new(12, 96, 1, "BB01").with_different_currency(true)
             end 
         end     
         $lcGuiaRemision =""      
