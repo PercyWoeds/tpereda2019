@@ -497,7 +497,7 @@ OPERACION SUJETA AL SISTEMA DE PAGO DE OBLIGACIONES TRIBUTARIAS CON EL GOBIERNO 
           #$lcFile2     = File.expand_path('../../../', __FILE__)+"/credit_note.xml"
           
           
-          zip_file_path     = File.expand_path('../../../../', __FILE__)+"/sunat-ruby9/credit_note.xml"        
+          zip_file_path     = File.expand_path('../../../../', __FILE__)+"/tpereda/credit_note.xml"        
           
           zip_file = File.new(zip_file_path, 'w')
           
