@@ -1,5 +1,5 @@
 class ActionCorreo < ApplicationMailer
-  	  default from: 'percywoeds@gmail.com'
+  	  default from: 'facturaselectronicas@tpereda.com.pe'
 
 	  def bienvenido_email(invoice)
 		  @invoices=invoice 			
