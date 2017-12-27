@@ -11,8 +11,10 @@ class ActionCorreo < ApplicationMailer
 		  email_with_copy = "Operaciones <operaciones@tpereda.com.pe>"	
 
 		  attachments[$lcFileName] =  open($lcFileName1).read
-
+		
+		  if $lcFile2 != ""	
 		  attachments[$lcFilezip] =  open($lcFile2).read
+		  end 
 
 		  mail(to: [$lcMail,$lcMail2,$lcMail3], cc: email_with_copy,   bcc:email_with_name, subject: 'Factura Electrónica : '+$lcFileNameIni )
 

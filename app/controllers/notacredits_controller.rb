@@ -497,7 +497,15 @@ OPERACION SUJETA AL SISTEMA DE PAGO DE OBLIGACIONES TRIBUTARIAS CON EL GOBIERNO 
           #$lcFile2     = File.expand_path('../../../', __FILE__)+"/credit_note.xml"
           
           
-          #$lcFile2     = File.expand_path('../../../../', __FILE__)+"/sunat-ruby9/credit_note.xml"        
+          zip_file_path     = File.expand_path('../../../../', __FILE__)+"/sunat-ruby9/credit_note.xml"        
+          
+          zip_file = File.new(zip_file_path, 'w')
+          
+          Zip::File.open(zip_file.path, Zip::File::Create) do |zip|
+            zip.add(file_name, file_path)
+          end
+          
+          $lcFile2 = zip_file
 
           ActionCorreo.bienvenido_email(@invoice).deliver    
           @mailing = Mailing.new(:td =>$lcTd, :serie => 'FF01', :numero => $lcDocument_serial_id, :ruc=>$lcRuc, :flag1 => '1')
