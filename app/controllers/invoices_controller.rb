@@ -5,7 +5,7 @@
          @invoices=Invoice.find_by_sql('Select invoices.*,clients.vrazon2,mailings.flag1 from invoices 
             LEFT JOIN mailings ON invoices.numero = mailings.numero
             LEFT  JOIN clients ON invoices.cliente = clients.vcodigo            
-            order by invoices.numero::int desc').paginate(:page => params[:page])
+            order by invoices.numero desc').paginate(:page => params[:page])
     end     
     
     def search
@@ -33,6 +33,15 @@
         @list           = Invoice.find_by_sql([' Select invoices.*,clients.vrazon2,clients.vdireccion,clients.vdistrito,clients.vprov,clients.vdep,clients.mailclient,clients.mailclient2,clients.mailclient3  from invoices INNER JOIN clients ON clients.vcodigo= invoices.cliente where invoices.id = ?',params[:id] ] )
         
         $lg_fecha       = @invoice.fecha 
+        
+        $lcFecha1codigo      = $lg_fecha.to_s
+
+          parts = $lcFecha1codigo.split("-")
+          $aa = parts[0]
+          $mm = parts[1]        
+          $dd = parts[2]       
+        $lcFechaCodigoBarras = $aa << "-" << $mm << "-" << $dd
+        
         $lg_serial_id   = @invoice.numero.to_i
         $lg_serial_id2  = @invoice.numero
 
@@ -105,7 +114,29 @@
             $lcDes2 = ""
         end 
         
+        $lcSerie= @invoice.serie
+        $lcruc = "20424092941" 
         
+        if $lcTd == 'FT'
+            $lctidodocumento = '01'
+        end
+        if $lcTd =='BV'
+            $lctidodocumento = '03'
+        end 
+        if $lcTd == 'NC'
+            $lctidodocumento = '07'
+        end 
+        if $lcTd == 'ND'
+            $lctidodocumento = '06'
+        end
+        if @invoice.td == "FT"
+          $lcTipoDocCli =  "1"
+        else
+          $lcTipoDocCli =  "6"
+        end 
+        $lcNroDocCli =@invoice.cliente 
+        
+        $lcCodigoBarra = $lcruc << "|" << $lcTd << "|" << $lcSerie << "|" << $lcDocument_serial_id.to_s << "|" <<$lcIgv.to_s<< "|" << $lcTotal.to_s << "|" << $lcFechaCodigoBarras << "|" << $lcTipoDocCli << "|" << $lcNroDocCli
         
         $lcDescrip = $lcDes1.lstrip 
 

@@ -44,25 +44,25 @@
   
   <div class="field">
     <%= f.label :quantity,"Cantidad " %><br>
-    <%= f.text_field :quantity %>
+    <%= f.number_field :quantity,  :step => 0.1 %>
   </div>
   
   <div class="field">
     <%= f.label :price ,"Precio "%><br>
-    <%= f.text_field :price %>
+    <%= f.number_field :price, :step => 0.1 %>
   </div>
     
   <div class="field">
     <%= f.label :subtotal %><br>
-    <%= f.text_field :subtotal %>
+    <%= f.number_field :subtotal, :readonly => true %>
   </div>
   <div class="field">
     <%= f.label :tax %><br>
-    <%= f.text_field :tax %>
+    <%= f.number_field :tax, :readonly => true %>
   </div>
   <div class="field">
     <%= f.label :total %><br>
-    <%= f.text_field :total %>
+    <%= f.number_field :total , :onclick => "calculoTotal()" %>
   </div>
   <div class="field">
        <%= f.label :moneda_id ,"Moneda "%><br />
@@ -92,3 +92,24 @@
   </div>
 <% end %>
 
+
+<script type="text/javascript">
+
+      
+    
+      function calculoTotal()
+    {
+      p = document.getElementById("notacredit_total");
+   
+            
+        b= p.val();
+        alert(b);
+        
+          vventa = b.val()  / 1.18 ;
+          igv = b - vventa ;
+        $("#notacredit_subtotal").html(vventa);
+        $("#notacredit_tax").html(igv);        
+     
+
+     }
+</script>

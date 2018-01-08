@@ -490,13 +490,10 @@ OPERACION SUJETA AL SISTEMA DE PAGO DE OBLIGACIONES TRIBUTARIAS CON EL GOBIERNO 
         if credit_note.valid?          
           credit_note.to_pdf
           File::open("credit_note.xml", "w") { |file| file.write(credit_note.to_xml) }
-
           
           $lcFileName1 = File.expand_path('../../../', __FILE__)+ "/"+$lcFileName        
             
           #$lcFile2     = File.expand_path('../../../', __FILE__)+"/credit_note.xml"
-          
-          
           
           $lcFile2 = ""
 
