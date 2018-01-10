@@ -54,15 +54,16 @@
     
   <div class="field">
     <%= f.label :subtotal %><br>
-    <%= f.number_field :subtotal, :readonly => true %>
+    
+   <span id="notacredit_subtotal">0.00</span>
   </div>
   <div class="field">
     <%= f.label :tax %><br>
-    <%= f.number_field :tax, :readonly => true %>
+    <span id="notacredit_tax">0.00</span>
   </div>
   <div class="field">
     <%= f.label :total %><br>
-    <%= f.number_field :total , :onclick => "calculoTotal()" %>
+    <span id="notacredit_total">0.00</span>
   </div>
   <div class="field">
        <%= f.label :moneda_id ,"Moneda "%><br />
@@ -94,22 +95,35 @@
 
 
 <script type="text/javascript">
-
-      
+  $(document).ready(function() {
+    $("#notacredit_quantity").bind("keyup", function() {
+      calculoTotal();
+    });
+    $("#notacredit_price").bind("keyup", function() {
+      calculoTotal();
+    });
+    
+  });
     
       function calculoTotal()
     {
-      p = document.getElementById("notacredit_total");
-   
-            
-        b= p.val();
-        alert(b);
-        
-          vventa = b.val()  / 1.18 ;
-          igv = b - vventa ;
-        $("#notacredit_subtotal").html(vventa);
-        $("#notacredit_tax").html(igv);        
+      var quantity = $("#notacredit_quantity").val();
+      var price = $("#notacredit_price").val();
+      
+      
+      var total = round(quantity * price,2);
+      var vventa = round(total / 1.18,2 );
+      var igv = round(total - vventa ,2);
+      
+      
+      $("#notacredit_total").html(total);
+      $("#notacredit_subtotal").html(vventa);
+      $("#notacredit_tax").html(igv);
+      
      
-
-     }
+    }
+    
+    function round(value, decimals) {
+      return Number(Math.round(value+'e'+decimals)+'e-'+decimals);
+  }
 </script>
