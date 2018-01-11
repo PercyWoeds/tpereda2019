@@ -1,6 +1,6 @@
 class Notacredit < ActiveRecord::Base
 
-validates_presence_of  :code,:subtotal,:tax,:total,:mod_factura,:nombre
+validates_presence_of  :code,:mod_factura,:nombre,:quantity,:price 
 
 validates_uniqueness_of :code, scope: :nota_id 
  
