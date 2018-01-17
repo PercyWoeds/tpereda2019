@@ -554,6 +554,10 @@ OPERACION SUJETA AL SISTEMA DE PAGO DE OBLIGACIONES TRIBUTARIAS CON EL GOBIERNO 
   def create
     @notacredit = Notacredit.new(notacredit_params)
   @customers = Client.all.order(:vrazon2)
+   @notacredit[:subtotal] = params[:notacredit_subtotal]
+   @notacredit[:tax] = params[:notacredit_tax]
+   @notacredit[:total] = params[:notacredit_total]
+   
   @notas = Notum.all 
     respond_to do |format|
       if @notacredit.save
@@ -569,6 +573,13 @@ OPERACION SUJETA AL SISTEMA DE PAGO DE OBLIGACIONES TRIBUTARIAS CON EL GOBIERNO 
   # PATCH/PUT /notacredits/1
   # PATCH/PUT /notacredits/1.json
   def update
+    
+    @quantity = params[:notacredit][:quantity] 
+    @precio = params[:notacredit][:price] 
+    @notacredit[:subtotal] = @quantity.to_f  * @precio.to_f
+   
+   @notacredit[:total] = @notacredit[:subtotal] * 1.18
+   @notacredit[:tax]  = @notacredit[:total] - @notacredit[:subtotal]
     respond_to do |format|
       if @notacredit.update(notacredit_params)
         format.html { redirect_to @notacredit, notice: 'Notacredit was successfully updated.' }

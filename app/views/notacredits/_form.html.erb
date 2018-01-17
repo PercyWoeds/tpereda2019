@@ -44,12 +44,12 @@
   
   <div class="field">
     <%= f.label :quantity,"Cantidad " %><br>
-    <%= f.number_field :quantity,  :step => 0.1 %>
+    <%= f.number_field :quantity,  :step => 0.01 %>
   </div>
   
   <div class="field">
     <%= f.label :price ,"Precio "%><br>
-    <%= f.number_field :price, :step => 0.1 %>
+    <%= f.number_field :price, :step => 0.01 %>
   </div>
     
   <div class="field">
@@ -111,8 +111,8 @@
       var price = $("#notacredit_price").val();
       
       
-      var total = round(quantity * price,2);
-      var vventa = round(total / 1.18,2 );
+      var vventa = round(quantity * price,2);
+      var total = round(vventa  * 1.18,2 );
       var igv = round(total - vventa ,2);
       
       
