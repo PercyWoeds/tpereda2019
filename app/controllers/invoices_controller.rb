@@ -114,7 +114,9 @@
             $lcDes2 = ""
         end 
         
-        $lcSerie= @invoice.serie
+       
+       $lcSerie= @invoice.serie
+
         $lcruc = "20424092941" 
         
         if $lcTd == 'FT'
@@ -134,9 +136,22 @@
         else
           $lcTipoDocCli =  "6"
         end 
-        $lcNroDocCli =@invoice.cliente 
+         $lcNroDocCli =@invoice.get_cliente(@invoice.cliente)
+         
+         $lcFecha1codigo      = $lg_fecha.to_s
+
+          parts = $lcFecha1codigo.split("-")
+          $aa = parts[0]
+          $mm = parts[1]        
+          $dd = parts[2]       
+        $lcFechaCodigoBarras = $aa << "-" << $mm << "-" << $dd
         
-        $lcCodigoBarra = $lcruc << "|" << $lcTd << "|" << $lcSerie << "|" << $lcDocument_serial_id.to_s << "|" <<$lcIgv.to_s<< "|" << $lcTotal.to_s << "|" << $lcFechaCodigoBarras << "|" << $lcTipoDocCli << "|" << $lcNroDocCli
+        $lcIGVcode = @invoice.igv
+        $lcTotalcode = @invoice.importe 
+        
+        
+        $lcCodigoBarra = $lcruc << "|" << $lcTd << "|" << $lcSerie << "|" << $lcDocument_serial_id.to_s << "|" <<$lcIGVcode.to_s<< "|" << $lcTotalcode.to_s << "|" << $lcFechaCodigoBarras << "|" << $lcTipoDocCli << "|" << $lcNroDocCli
+     
         
         $lcDescrip = $lcDes1.lstrip 
 

@@ -149,7 +149,7 @@ require 'active_support/number_helper'
         columns([1]).align = :right
         
       end
-     # pdf.image open("https://chart.googleapis.com/chart?chs=120x120&cht=qr&chl=#{$lcCodigoBarra}&choe=UTF-8")
+      pdf.image open("https://chart.googleapis.com/chart?chs=120x120&cht=qr&chl=#{$lcCodigoBarra}&choe=UTF-8")
       
       pdf
 
