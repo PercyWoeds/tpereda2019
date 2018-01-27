@@ -27,6 +27,11 @@ class Invoice < ActiveRecord::Base
         read_attribute(client_name) || client.vrazon2
       end
 
+      def get_cliente(code)
+          a = Client.find_by(vcodigo: code)
+          return a.vruc 
+      end 
+      
 end
 
 
