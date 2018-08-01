@@ -7,7 +7,7 @@ class NotacreditsController < ApplicationController
  before_action :set_notacredit, only: [:show, :edit, :update, :destroy]
  before_action :authenticate_user!
  
- after_save :update_total_items
+ after_action  :update_total_items , only: [:create, :update ]
  
  
  validates_uniqueness_of :code 
