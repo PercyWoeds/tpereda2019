@@ -6,7 +6,9 @@ include ApplicationHelper
 class NotacreditsController < ApplicationController
  before_action :set_notacredit, only: [:show, :edit, :update, :destroy]
  before_action :authenticate_user!
- saved_changes :update_total_items
+ after_create :update_total_items
+ after_update :update_total_items
+ 
  
  validates_uniqueness_of :code 
  validates_presence_of :quantity,:price ,:nombre 
