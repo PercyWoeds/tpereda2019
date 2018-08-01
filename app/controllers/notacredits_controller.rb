@@ -10,10 +10,6 @@ class NotacreditsController < ApplicationController
  after_action  :update_total_items , only: [:create, :update ]
  
  
- validates_uniqueness_of :code 
- validates_presence_of :quantity,:price ,:nombre 
- 
- 
    # GET /notacredits
   # GET /notacredits.json
   def index
