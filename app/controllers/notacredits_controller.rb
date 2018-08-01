@@ -6,7 +6,8 @@ include ApplicationHelper
 class NotacreditsController < ApplicationController
  before_action :set_notacredit, only: [:show, :edit, :update, :destroy]
  before_action :authenticate_user!
- before_save :update_total_items
+ after_save :update_total_items
+ 
  validates_uniqueness_of :code 
  validates_presence_of :quantity,:price ,:nombre 
  
@@ -21,7 +22,6 @@ class NotacreditsController < ApplicationController
   
   end
   end
-
 
   def import
        Notacredit.import(params[:file])
@@ -603,6 +603,7 @@ OPERACION SUJETA AL SISTEMA DE PAGO DE OBLIGACIONES TRIBUTARIAS CON EL GOBIERNO 
       format.json { head :no_content }
     end
   end
+  
   def update_total_items
     
     b = Notacredit.find(self.id)
