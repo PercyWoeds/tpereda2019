@@ -7,9 +7,6 @@ class NotacreditsController < ApplicationController
  before_action :set_notacredit, only: [:show, :edit, :update, :destroy]
  before_action :authenticate_user!
  
- after_action  :update_total_items , only: [:create, :update ]
- 
- 
    # GET /notacredits
   # GET /notacredits.json
   def index
@@ -564,6 +561,8 @@ OPERACION SUJETA AL SISTEMA DE PAGO DE OBLIGACIONES TRIBUTARIAS CON EL GOBIERNO 
   @notas = Notum.all 
     respond_to do |format|
       if @notacredit.save
+        @notacredit.update_total_items
+        
         format.html { redirect_to @notacredit, notice: 'Notacredit was successfully created.' }
         format.json { render :show, status: :created, location: @notacredit }
       else
@@ -583,6 +582,7 @@ OPERACION SUJETA AL SISTEMA DE PAGO DE OBLIGACIONES TRIBUTARIAS CON EL GOBIERNO 
     
     respond_to do |format|
       if @notacredit.update(notacredit_params)
+        @notacredit.update_total_items
         format.html { redirect_to @notacredit, notice: 'Notacredit was successfully updated.' }
         format.json { render :show, status: :ok, location: @notacredit }
       else
@@ -614,15 +614,6 @@ OPERACION SUJETA AL SISTEMA DE PAGO DE OBLIGACIONES TRIBUTARIAS CON EL GOBIERNO 
       params.require(:notacredit).permit(:fecha, :code, :nota_id, :motivo, :subtotal, :tax, :total, :moneda_id, :mod_factura, :mod_tipo, :processed, :tipo, :description, :client_id,:price,:quantity,:notum_id,:nombre)
     end
     
-    def update_total_items
-    
-      b = Notacredit.find(self.id)
-      b.subtotal = b.quantity * b.price 
-      b.total = b.subtotal *1.18
-      b.tax =b.total - b.subtotal 
-      b.save
-   
-    end
 
 
 end
