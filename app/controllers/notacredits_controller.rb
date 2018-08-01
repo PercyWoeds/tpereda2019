@@ -6,8 +6,8 @@ include ApplicationHelper
 class NotacreditsController < ApplicationController
  before_action :set_notacredit, only: [:show, :edit, :update, :destroy]
  before_action :authenticate_user!
- after_create :update_total_items
- after_update :update_total_items
+ 
+ after_save :update_total_items
  
  
  validates_uniqueness_of :code 
@@ -606,15 +606,6 @@ OPERACION SUJETA AL SISTEMA DE PAGO DE OBLIGACIONES TRIBUTARIAS CON EL GOBIERNO 
     end
   end
   
-  def update_total_items
-    
-    b = Notacredit.find(self.id)
-    b.subtotal = b.quantity * b.price 
-    b.total = b.subtotal *1.18
-    b.tax =b.total - b.subtotal 
-    b.save
-    
-  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -626,6 +617,18 @@ OPERACION SUJETA AL SISTEMA DE PAGO DE OBLIGACIONES TRIBUTARIAS CON EL GOBIERNO 
     def notacredit_params
       params.require(:notacredit).permit(:fecha, :code, :nota_id, :motivo, :subtotal, :tax, :total, :moneda_id, :mod_factura, :mod_tipo, :processed, :tipo, :description, :client_id,:price,:quantity,:notum_id,:nombre)
     end
+    
+    def update_total_items
+    
+      b = Notacredit.find(self.id)
+      b.subtotal = b.quantity * b.price 
+      b.total = b.subtotal *1.18
+      b.tax =b.total - b.subtotal 
+      b.save
+   
+    end
+
+
 end
 
 
