@@ -7,8 +7,11 @@ class NotacreditsController < ApplicationController
  before_action :set_notacredit, only: [:show, :edit, :update, :destroy]
  before_action :authenticate_user!
  before_save :update_total_items
+ validates_uniqueness_of :code 
+ validates_presence_of :quantity,:price ,:nombre 
  
-  # GET /notacredits
+ 
+   # GET /notacredits
   # GET /notacredits.json
   def index
     @notacredits = Notacredit.all.order(:nota_id,:fecha)
