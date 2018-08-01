@@ -4,8 +4,10 @@
 include ApplicationHelper
 
 class NotacreditsController < ApplicationController
-  before_action :set_notacredit, only: [:show, :edit, :update, :destroy]
+ before_action :set_notacredit, only: [:show, :edit, :update, :destroy]
  before_action :authenticate_user!
+ before_save :update_total_items
+ 
   # GET /notacredits
   # GET /notacredits.json
   def index
@@ -553,7 +555,7 @@ OPERACION SUJETA AL SISTEMA DE PAGO DE OBLIGACIONES TRIBUTARIAS CON EL GOBIERNO 
   # POST /notacredits.json
   def create
     @notacredit = Notacredit.new(notacredit_params)
-  @customers = Client.all.order(:vrazon2)
+   @customers = Client.all.order(:vrazon2)
    @notacredit[:subtotal] = params[:notacredit_subtotal]
    @notacredit[:tax] = params[:notacredit_tax]
    @notacredit[:total] = params[:notacredit_total]
@@ -576,10 +578,8 @@ OPERACION SUJETA AL SISTEMA DE PAGO DE OBLIGACIONES TRIBUTARIAS CON EL GOBIERNO 
     
     @quantity = params[:notacredit][:quantity] 
     @precio = params[:notacredit][:price] 
-    @notacredit[:subtotal] = @quantity.to_f  * @precio.to_f
-   
-   @notacredit[:total] = @notacredit[:subtotal] * 1.18
-   @notacredit[:tax]  = @notacredit[:total] - @notacredit[:subtotal]
+    
+    
     respond_to do |format|
       if @notacredit.update(notacredit_params)
         format.html { redirect_to @notacredit, notice: 'Notacredit was successfully updated.' }
@@ -599,6 +599,15 @@ OPERACION SUJETA AL SISTEMA DE PAGO DE OBLIGACIONES TRIBUTARIAS CON EL GOBIERNO 
       format.html { redirect_to notacredits_url, notice: 'Notacredit was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+  def update_total_items
+    
+    b = Notacredit.find(self.id)
+    b.subtotal = b.quantity * b.price 
+    b.total = b.subtotal *1.18
+    b.tax =b.total - b.subtotal 
+    b.save
+    
   end
 
   private
