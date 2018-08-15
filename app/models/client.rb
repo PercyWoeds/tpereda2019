@@ -22,7 +22,7 @@ class Client < ActiveRecord::Base
       
 
 	   def self.search(search,page=1)      
-        where(["vrazon2 ILIKE ?","%#{:search}%"]).order('vrazon2')
+        where(["vrazon2 iLIKE or vruc iLIKE ?","%#{:search}%","%#{:search}%"]).order('vrazon2')
      end
 
 
