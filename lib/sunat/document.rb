@@ -113,7 +113,8 @@ module SUNAT
           :italic => "app/assets/fonts/OpenSans-Italic.ttf",
         })
 
-        
+        pdf.font "Open Sans",:size =>10
+  
         
         pdf = build_pdf_header(pdf)
         pdf = build_pdf_body(pdf)
