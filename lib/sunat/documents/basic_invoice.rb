@@ -85,7 +85,7 @@ require 'active_support/number_helper'
     end
 
     def build_pdf_body(pdf)
-      pdf.font "Helvetica", :size => 8
+       pdf.font "Open Sans",:size => 8
 
       max_rows = [client_data_headers.length, invoice_headers.length, 0].max
       rows = []
