@@ -104,16 +104,22 @@ module SUNAT
     end
 
     def build_pdf(path=false)
+      
+      
       Prawn::Document.generate(path || self.pdf_path || "app/pdf_output/#{file_name}.pdf") do |pdf|
       
-        pdf.font "Helvetica"
+        pdf.font_families.update("Open Sans" => {
+          :normal => "app/assets/fonts/OpenSans-Regular.ttf",
+          :italic => "app/assets/fonts/OpenSans-Italic.ttf",
+        })
+
+        
+        
         pdf = build_pdf_header(pdf)
         pdf = build_pdf_body(pdf)
         
         build_pdf_footer(pdf)
-        puts "docu"
-        puts file_name
-        puts $lcFileName 
+       
 
         $lcFileName =path || self.pdf_path || "app/pdf_output/#{file_name}.pdf"
         $lcFileNameIni = file_name
