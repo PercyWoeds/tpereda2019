@@ -99,5 +99,5 @@ Rails.application.configure do
 
          
   config.serve_static_assets = true
-    
+    config.exceptions_app = ->(env) { ExceptionsController.action(:show).call(env) }
 end
