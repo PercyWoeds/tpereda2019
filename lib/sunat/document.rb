@@ -110,8 +110,6 @@ module SUNAT
       
        
        
-  
-        
         pdf = build_pdf_header(pdf)
         pdf = build_pdf_body(pdf)
         
