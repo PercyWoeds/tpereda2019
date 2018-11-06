@@ -87,8 +87,8 @@ require 'active_support/number_helper'
     def build_pdf_body(pdf)
       
        pdf.font_families.update("Open Sans" => {
-          :normal => "~/app/assets/fonts/OpenSans-Regular.ttf",
-          :italic => "~/app/assets/fonts/OpenSans-Italic.ttf",
+          :normal => "/app/assets/fonts/OpenSans-Regular.ttf",
+          :italic => "/app/assets/fonts/OpenSans-Italic.ttf",
         })
 
        pdf.font "Open Sans",:size => 8
