@@ -86,11 +86,14 @@ require 'active_support/number_helper'
 
     def build_pdf_body(pdf)
       
+
+      
        pdf.font_families.update("Open Sans" => {
           :normal => "app/assets/fonts/OpenSans-Regular.ttf",
           :italic => "app/assets/fonts/OpenSans-Italic.ttf",
-        })
-
+          :bold   => "app/assets/fonts/OpenSans-Bold.ttf",
+      } )
+      
        pdf.font "Open Sans",:size => 8
 
       max_rows = [client_data_headers.length, invoice_headers.length, 0].max
