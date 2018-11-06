@@ -108,12 +108,8 @@ module SUNAT
       
       Prawn::Document.generate(path || self.pdf_path || "app/pdf_output/#{file_name}.pdf") do |pdf|
       
-        pdf.font_families.update("Open Sans" => {
-          :normal => "app/assets/fonts/OpenSans-Regular.ttf",
-          :italic => "app/assets/fonts/OpenSans-Italic.ttf",
-        })
-
-        pdf.font "Open Sans",:size =>10
+       
+       
   
         
         pdf = build_pdf_header(pdf)
