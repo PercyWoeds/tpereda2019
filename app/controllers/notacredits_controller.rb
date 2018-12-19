@@ -505,6 +505,8 @@ OPERACION SUJETA AL SISTEMA DE PAGO DE OBLIGACIONES TRIBUTARIAS CON EL GOBIERNO 
         end
                 
       else
+        
+        
 
           debit_note_data = { issue_date: Date.new($aa,$mm,$dd), id: $lcNumeroNota, customer: {legal_name:$lcLegalName , ruc:$lcRuc },
                      billing_reference: {id: $lcBillingReference, document_type_code: "01"},
@@ -521,6 +523,15 @@ OPERACION SUJETA AL SISTEMA DE PAGO DE OBLIGACIONES TRIBUTARIAS CON EL GOBIERNO 
             File::open("debit_note.xml", "w") { |file| file.write(debit_note.to_xml) }
             $lcFileName1 = File.expand_path('../../../', __FILE__)+ "/"+$lcFileName
               $lcFile2     = File.expand_path('../../../', __FILE__)+"/debit_note.xml"
+              
+              Zip::Archive.open(zipfile.path, Zip::CREATE) do |zip|
+              zip.add_file $lcFile2
+              end 
+
+  
+              
+              
+              
 
             ActionCorreo.bienvenido_email(@invoice).deliver    
             @mailing = Mailing.new(:td =>$lcTd, :serie => 'FF01', :numero => $lcDocument_serial_id, :ruc=>$lcRuc, :flag1 => '1')
