@@ -13,7 +13,7 @@
             @invoices=Invoice.find_by_sql('Select invoices.*,clients.vrazon2,mailings.flag1 from invoices 
             LEFT JOIN mailings ON invoices.numero = mailings.numero
             LEFT  JOIN clients ON invoices.cliente = clients.vcodigo            
-            order by invoices.td,invoices.serie,CAST(numero as int ) desc').paginate(:page => params[:page])
+            order by invoices.td,invoices.serie,CAST(invoices.numero as int ) desc').paginate(:page => params[:page])
         else            
             @invoices=Invoice.find_by_sql(['Select invoices.*,clients.vrazon2,mailings.flag1 from invoices 
             LEFT JOIN mailings ON invoices.numero = mailings.numero
