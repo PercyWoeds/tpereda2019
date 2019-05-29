@@ -7,8 +7,6 @@ gem 'rails', '4.2.5.1'
 # Use sqlite3 as the database for Active Record
 gem 'httpclient', '~> 2.8', '>= 2.8.2.2'
 
-
-
 gem 'rspec-core', '~> 3.5', '>= 3.5.1'
 
 # Use SCSS for stylesheets

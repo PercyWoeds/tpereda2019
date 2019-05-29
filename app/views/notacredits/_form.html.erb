@@ -57,14 +57,17 @@
     
    <span id="notacredit_subtotal">0.00</span>
   </div>
+  
   <div class="field">
     <%= f.label :tax %><br>
     <span id="notacredit_tax">0.00</span>
   </div>
+  
   <div class="field">
     <%= f.label :total %><br>
     <span id="notacredit_total">0.00</span>
   </div>
+  
   <div class="field">
        <%= f.label :moneda_id ,"Moneda "%><br />
      <%= f.select :moneda_id , options_for_select([["SOLES",1],["DOLARES",2]]) %>
@@ -88,6 +91,7 @@
     <%= f.label :nombre %><br>
     <%= f.text_field :nombre %>
   </div>
+  
   <div class="actions">
     <%= f.submit %>
   </div>
