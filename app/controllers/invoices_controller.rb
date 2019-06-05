@@ -303,8 +303,7 @@ OPERACION SUJETA AL SISTEMA DE PAGO DE OBLIGACIONES TRIBUTARIAS CON EL GOBIERNO 
         
         $lcFileName1=File.expand_path('../../../', __FILE__)+ "/"+$lcFileName        
         $lcFile2 =File.expand_path('../../../', __FILE__)+ "/"+$lcFilezip
-        $lcFile2    =File.expand_path('../../../', __FILE__)+ "/"+$lcFilezip
-        
+    
         ActionCorreo.bienvenido_email(@invoice).deliver
     
         @mailing = Mailing.new(:td =>$lcTd, :serie => 'FF01', :numero => $lcDocument_serial_id, :ruc=>$lcRuc, :flag1 => '1')
