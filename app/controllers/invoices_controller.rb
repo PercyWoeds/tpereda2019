@@ -96,7 +96,6 @@
         if @invoice.description == nil
             $lcDes0 = " "
             $lcDes1 = " "
-
         else
             if @invoice.descrip != nil
                 $lcDes0 = @invoice.description.tr("\n"," ") << " " << @invoice.descrip.tr("\n"," ")
@@ -201,17 +200,17 @@ OPERACION SUJETA AL SISTEMA DE PAGO DE OBLIGACIONES TRIBUTARIAS CON EL GOBIERNO 
 
          if $lcTd == "FT"
             if $lcMoneda == 2
-                case_3  = InvoiceGenerator.new(1, 3, 1, "FF01").with_igv(true)
-                $aviso = 'Factura enviada con exito...'
+               # case_3  = InvoiceGenerator.new(1, 3, 1, "FF01").with_igv(true)
+                $aviso = 'Opcion no disponible consulte con dpto de finanzas...'
             else            
-                case_49 = InvoiceGenerator.new(7, 49, 1, "FF01").with_different_currency(true)
-                $aviso = 'Factura enviada con exito...'
+               # case_49 = InvoiceGenerator.new(7, 49, 1, "FF01").with_different_currency(true)
+                $aviso = 'Opcion no disponible consulte con dpto de finanzas...'
             end 
         else
             if $lcMoneda == 2
-                case_52 = ReceiptGenerator.new(8, 52, 1, "BB01").with_igv(true)
+                #case_52 = ReceiptGenerator.new(8, 52, 1, "BB01").with_igv(true)
             else        
-                case_96 = ReceiptGenerator.new(12, 96, 1, "BB01").with_different_currency(true)
+                #case_96 = ReceiptGenerator.new(12, 96, 1, "BB01").with_different_currency(true)
             end 
         end     
         $lcGuiaRemision =""      
