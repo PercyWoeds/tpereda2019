@@ -196,14 +196,30 @@ require 'active_support/number_helper'
     end
 
     def invoice_summary
+
+      monedasimbolo = Currency.new(document_currency_code).singular_name.upcase]
+      
       invoice_summary = []
-      monetary_totals = [{label: "Operaciones gravadas", catalog_index: 0},
-       {label: "Operaciones inafectas", catalog_index: 1},
-       {label: "Operaciones exoneradas", catalog_index: 2},
-       {label: "Operaciones gratuitas", catalog_index: 3},
-       {label: "Sub total", catalog_index: 4},
-       {label: "Total descuentos", catalog_index: 9}
-      ]
+
+      if monedasimbolo == "SOL"
+
+          monetary_totals = [{label: "Operaciones gravadas S/", catalog_index: 0},
+           {label: "Operaciones inafectas S/", catalog_index: 1},
+           {label: "Operaciones exoneradas S/"  , catalog_index: 2},
+           {label: "Operaciones gratuitas S/", catalog_index: 3},
+           {label: "Sub total S/", catalog_index: 4},
+           {label: "Total descuentos S/", catalog_index: 9}
+          ]
+      else
+        monetary_totals = [{label: "Operaciones gravadas USD", catalog_index: 0},
+           {label: "Operaciones inafectas USD", catalog_index: 1},
+           {label: "Operaciones exoneradas USD"  , catalog_index: 2},
+           {label: "Operaciones gratuitas USD", catalog_index: 3},
+           {label: "Sub total USD", catalog_index: 4},
+           {label: "Total descuentos USD", catalog_index: 9}
+          ]
+      end 
+
       monetary_totals.each do |monetary_total|
         value = get_monetary_total_by_id(SUNAT::ANNEX::CATALOG_14[monetary_total[:catalog_index]])
         if value.present?
