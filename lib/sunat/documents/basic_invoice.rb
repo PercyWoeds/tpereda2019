@@ -211,17 +211,7 @@ require 'active_support/number_helper'
            {label: "Sub total S/", catalog_index: 4},
            {label: "Total descuentos S/", catalog_index: 9}
           ]
-      else
-        monetary_totals = [{label: "Operaciones gravadas USD", catalog_index: 0},
-           {label: "Operaciones inafectas USD", catalog_index: 1},
-           {label: "Operaciones exoneradas USD"  , catalog_index: 2},
-           {label: "Operaciones gratuitas USD", catalog_index: 3},
-           {label: "Sub total USD", catalog_index: 4},
-           {label: "Total descuentos USD", catalog_index: 9}
-          ]
-      end 
-
-      monetary_totals.each do |monetary_total|
+           monetary_totals.each do |monetary_total|
         value = get_monetary_total_by_id(SUNAT::ANNEX::CATALOG_14[monetary_total[:catalog_index]])
         if value.present?
           invoice_summary << [monetary_total[:label], ActiveSupport::NumberHelper::number_to_delimited(value.payable_amount,delimiter:",",separator:".").to_s]
@@ -232,13 +222,43 @@ require 'active_support/number_helper'
         invoice_summary << [tax_total.tax_type_name,ActiveSupport::NumberHelper::number_to_delimited(tax_total.tax_amount,delimiter:",",separator:".").to_s]
       end
 
-      invoice_summary << ["Total", ActiveSupport::NumberHelper::number_to_delimited(legal_monetary_total,delimiter:",",separator:".").to_s]
+      invoice_summary << ["Total S/", ActiveSupport::NumberHelper::number_to_delimited(legal_monetary_total,delimiter:",",separator:".").to_s]
 
       if get_additional_property_by_id(SUNAT::ANNEX::CATALOG_15[0])
         total = get_additional_property_by_id(SUNAT::ANNEX::CATALOG_15[0]).value
       else
         total = legal_monetary_total.textify.upcase
       end
+      else
+        monetary_totals = [{label: "Operaciones gravadas USD", catalog_index: 0},
+           {label: "Operaciones inafectas USD", catalog_index: 1},
+           {label: "Operaciones exoneradas USD"  , catalog_index: 2},
+           {label: "Operaciones gratuitas USD", catalog_index: 3},
+           {label: "Sub total USD", catalog_index: 4},
+           {label: "Total descuentos USD", catalog_index: 9}
+          ]
+
+           monetary_totals.each do |monetary_total|
+        value = get_monetary_total_by_id(SUNAT::ANNEX::CATALOG_14[monetary_total[:catalog_index]])
+        if value.present?
+          invoice_summary << [monetary_total[:label], ActiveSupport::NumberHelper::number_to_delimited(value.payable_amount,delimiter:",",separator:".").to_s]
+        end
+      end
+
+      tax_totals.each do |tax_total|
+        invoice_summary << [tax_total.tax_type_name,ActiveSupport::NumberHelper::number_to_delimited(tax_total.tax_amount,delimiter:",",separator:".").to_s]
+      end
+
+      invoice_summary << ["Total USD", ActiveSupport::NumberHelper::number_to_delimited(legal_monetary_total,delimiter:",",separator:".").to_s]
+
+      if get_additional_property_by_id(SUNAT::ANNEX::CATALOG_15[0])
+        total = get_additional_property_by_id(SUNAT::ANNEX::CATALOG_15[0]).value
+      else
+        total = legal_monetary_total.textify.upcase
+      end
+      end 
+
+     
       invoice_summary << ["Son : ", ActiveSupport::NumberHelper::number_to_delimited(total,delimiter:",",separator:".")]
       invoice_summary
     end
