@@ -197,7 +197,7 @@ require 'active_support/number_helper'
 
     def invoice_summary
 
-      monedasimbolo = Currency.new(document_currency_code).singular_name.upcase]
+      monedasimbolo = Currency.new(document_currency_code).singular_name.upcase
       
       invoice_summary = []
 
