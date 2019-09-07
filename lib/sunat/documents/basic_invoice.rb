@@ -202,7 +202,7 @@ require 'active_support/number_helper'
       puts monedasimbolo 
       invoice_summary = []
 
-      if monedasimbolo == "SOL"
+      if monedasimbolo.strip == "SOL"
 
           monetary_totals = [{label: "Operaciones gravadas S/", catalog_index: 0},
            {label: "Operaciones inafectas S/", catalog_index: 1},
@@ -218,8 +218,10 @@ require 'active_support/number_helper'
         end
       end
 
+
+
       tax_totals.each do |tax_total|
-        invoice_summary << [tax_total.tax_type_name,ActiveSupport::NumberHelper::number_to_delimited(tax_total.tax_amount,delimiter:",",separator:".").to_s]
+        invoice_summary << ["IGV S/",ActiveSupport::NumberHelper::number_to_delimited(tax_total.tax_amount,delimiter:",",separator:".").to_s]
       end
 
       invoice_summary << ["Total S/", ActiveSupport::NumberHelper::number_to_delimited(legal_monetary_total,delimiter:",",separator:".").to_s]
@@ -246,7 +248,7 @@ require 'active_support/number_helper'
       end
 
       tax_totals.each do |tax_total|
-        invoice_summary << [tax_total.tax_type_name,ActiveSupport::NumberHelper::number_to_delimited(tax_total.tax_amount,delimiter:",",separator:".").to_s]
+        invoice_summary << ["IGV USD",ActiveSupport::NumberHelper::number_to_delimited(tax_total.tax_amount,delimiter:",",separator:".").to_s]
       end
 
       invoice_summary << ["Total USD", ActiveSupport::NumberHelper::number_to_delimited(legal_monetary_total,delimiter:",",separator:".").to_s]
