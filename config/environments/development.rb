@@ -49,5 +49,6 @@ Rails.application.configure do
     password:             'maldito2017',
     authentication:       'plain',
     enable_starttls_auto: true  }
+    
 
 end

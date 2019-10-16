@@ -89,6 +89,7 @@ Rails.application.configure do
   authentication:       :plain,
   enable_starttls_auto: true
   }
+  
     # address:              'yanamayo.yachay.pe',
     # port:                 587,
     # domain:               'yanamayo.yachay.pe',
