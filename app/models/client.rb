@@ -18,10 +18,11 @@ class Client < ActiveRecord::Base
          end 
          
         end
-      end       
+      end   
+
       
 
-	   def self.search(search,page=1)      
+	   def self.search(search )      
         where(["vrazon2 iLIKE ? or vruc iLIKE ?","%#{:search}%","%#{:search}%"]).order('vrazon2')
      end
 

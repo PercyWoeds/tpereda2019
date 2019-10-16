@@ -14,9 +14,8 @@ class ClientsController < ApplicationController
 
   def index
     
-    @likes= Client.order("vrazon2 DESC").page(params[:page]).per_page(15)        
-    @clients=@likes.all 
 
+    
     if params[:search]
       @clients = Client.search(params[:search]).order("vrazon2 ASC").page(params[:page]).per_page(15)        
     else
