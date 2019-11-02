@@ -38,7 +38,7 @@ gem "prawn"
 gem 'prawn-table'
 gem 'numbers_and_words', '~> 0.10.5'
 gem 'savon', '~> 2.11', '>= 2.11.1'
-gem 'rubyzip', '~> 1.2'
+gem 'rubyzip', '~> 1.3'
 
 gem 'i18n-active_record', :require => 'i18n/active_record'
 

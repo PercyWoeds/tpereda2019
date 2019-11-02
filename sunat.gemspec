@@ -22,7 +22,7 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency "activemodel", ">= 3.0", "< 4.3"
   spec.add_dependency "nokogiri"
-  spec.add_dependency "rubyzip", "~> 1.1.0"
+  spec.add_dependency "rubyzip", ">= 1.1", "< 2.1"
   spec.add_dependency "prawn", "~> 1.1.0"
   spec.add_dependency "savon"
   spec.add_dependency "numbers_and_words"
